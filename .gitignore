@@ -1,2 +1,9 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# Cargo packaging
+*.crate
+
 # AI reference files
 /vendor/

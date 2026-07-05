@@ -1,0 +1,23 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/ggsci",
+  "crates/ggsci-ratatui",
+  "crates/ggsci-ggsql",
+  "xtask",
+]
+default-members = ["crates/ggsci"]
+
+[workspace.package]
+edition = "2021"
+rust-version = "1.74"
+license = "MIT"
+repository = "https://github.com/nanxstats/ggsci-rs"
+homepage = "https://github.com/nanxstats/ggsci-rs"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"

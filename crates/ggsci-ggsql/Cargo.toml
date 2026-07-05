@@ -1,0 +1,16 @@
+[package]
+name = "ggsci-ggsql"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Private scaffold for future ggsci ggsql integration"
+publish = false
+
+[dependencies]
+ggsci = { version = "0.1.0", path = "../ggsci" }
+
+[lints]
+workspace = true

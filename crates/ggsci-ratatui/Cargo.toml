@@ -1,0 +1,13 @@
+[package]
+name = "ggsci-ratatui"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Private scaffold for future ggsci ratatui conversions"
+publish = false
+
+[lints]
+workspace = true

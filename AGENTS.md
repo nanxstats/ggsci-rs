@@ -1,16 +1,21 @@
 # AGENTS.md
 
-- Generated palette data and continuous fixtures are checked in. Do not edit
+- Generated core and iTerm palette data and continuous fixtures are checked in. Do not edit
   `crates/ggsci/src/generated/palettes.rs` or
+  `crates/ggsci/src/generated/iterm.rs` or
   `crates/ggsci/tests/generated/continuous_fixtures.rs` by hand.
 - Run `cargo xtask update-palettes` to refresh palette data and R golden
   fixtures from the vendored ggsci source. The command generates the core
-  database, generates continuous fixtures, and runs `cargo fmt --all`.
+  database, generates continuous fixtures, generates the dedicated iTerm
+  registry, and runs `cargo fmt --all`.
 - `PaletteKind::{Discrete, Continuous}` describes scale semantics, not whether
   colors are stored or generated. The `gsea`, `bs5`, `material`, and `tw3`
   families are continuous; the other current core families are discrete.
 - Continuous interpolation must remain compatible with R's CIE Lab/FMM spline
   behavior at the final RGB channel level. R is a maintainer dependency only.
+- iTerm themes are fixed discrete palettes in a dedicated typed registry. Every
+  `ItermPalette` reports `PaletteKind::Discrete`, while normal/bright is an
+  `ItermVariant`. Do not flatten iTerm themes into the core `palettes()` slice.
 - The published `ggsci` crate must not require R, Python, NumPy, matplotlib,
   jsonlite, or network access at build time.
 - Do not add feature flags for now. The crate remains a packaged deal.

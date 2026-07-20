@@ -25,12 +25,12 @@ pub enum Error {
         /// Requested hex color.
         input: String,
     },
-    /// A floating-point alpha value was outside `0.0..=1.0`.
+    /// A floating-point alpha value was outside its operation's valid range.
     InvalidAlpha {
         /// Requested alpha value.
         alpha: f32,
     },
-    /// More colors were requested than a static palette contains.
+    /// More colors were requested than a discrete palette contains.
     TooManyColorsRequested {
         /// Palette family.
         family: &'static str,
@@ -40,6 +40,20 @@ pub enum Error {
         requested: usize,
         /// Available number of colors.
         available: usize,
+    },
+    /// A discrete-only operation was requested for a continuous palette.
+    NotDiscretePalette {
+        /// Palette family.
+        family: &'static str,
+        /// Palette variant.
+        variant: &'static str,
+    },
+    /// A continuous-only operation was requested for a discrete palette.
+    NotContinuousPalette {
+        /// Palette family.
+        family: &'static str,
+        /// Palette variant.
+        variant: &'static str,
     },
 }
 
@@ -59,7 +73,10 @@ impl fmt::Display for Error {
                 write!(f, "invalid hex color `{input}`; expected `#RRGGBB`")
             }
             Self::InvalidAlpha { alpha } => {
-                write!(f, "invalid alpha `{alpha}`; expected a finite value in 0.0..=1.0")
+                write!(
+                    f,
+                    "invalid alpha `{alpha}`; expected a finite value in 0.0..=1.0 (continuous interpolation requires alpha > 0.0)"
+                )
             }
             Self::TooManyColorsRequested {
                 family,
@@ -68,7 +85,15 @@ impl fmt::Display for Error {
                 available,
             } => write!(
                 f,
-                "requested {requested} colors from `{family}:{variant}`, but only {available} are available"
+                "requested {requested} colors from discrete palette `{family}:{variant}`, but only {available} category colors are available"
+            ),
+            Self::NotDiscretePalette { family, variant } => write!(
+                f,
+                "`{family}:{variant}` is a continuous palette; this operation requires a discrete palette"
+            ),
+            Self::NotContinuousPalette { family, variant } => write!(
+                f,
+                "`{family}:{variant}` is a discrete palette; this operation requires a continuous palette"
             ),
         }
     }

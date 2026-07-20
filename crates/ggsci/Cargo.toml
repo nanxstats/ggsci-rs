@@ -1,6 +1,6 @@
 [package]
 name = "ggsci"
-version = "0.1.0"
+version = "0.2.0"
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
@@ -9,7 +9,7 @@ homepage.workspace = true
 description = "Scientific and sci-fi color palettes from ggsci for Rust"
 keywords = ["colors", "palettes", "ggplot2", "plotting", "visualization"]
 readme = "README.md"
-include = ["Cargo.toml", "README.md", "src/**/*.rs"]
+include = ["Cargo.toml", "README.md", "src/**/*.rs", "tests/**/*.rs"]
 
 [lints]
 workspace = true

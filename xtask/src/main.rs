@@ -37,6 +37,7 @@ fn update_palettes() -> Result<(), Box<dyn Error>> {
         env::var_os("GGSCI_SOURCE").map_or_else(|| root.join("vendor/ggsci"), PathBuf::from);
     let output = root.join("crates/ggsci/src/generated/palettes.rs");
     let fixture_output = root.join("crates/ggsci/tests/generated/continuous_fixtures.rs");
+    let iterm_output = root.join("crates/ggsci/src/generated/iterm.rs");
 
     run_command(
         Command::new("Rscript")
@@ -51,6 +52,13 @@ fn update_palettes() -> Result<(), Box<dyn Error>> {
             .arg("tools/generate-continuous-fixtures.R")
             .arg(&source)
             .arg(&fixture_output),
+    )?;
+    run_command(
+        Command::new("Rscript")
+            .current_dir(&root)
+            .arg("tools/generate-iterm-palettes.R")
+            .arg(&source)
+            .arg(&iterm_output),
     )?;
     run_command(
         Command::new("cargo")

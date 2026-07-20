@@ -15,6 +15,16 @@ pub enum Error {
         /// Requested variant name.
         variant: String,
     },
+    /// The requested iTerm palette does not exist.
+    UnknownItermPalette {
+        /// Requested iTerm theme name.
+        palette: String,
+    },
+    /// The requested iTerm variant does not exist.
+    UnknownItermVariant {
+        /// Requested iTerm variant name.
+        variant: String,
+    },
     /// A palette specification was not written as `family:variant`.
     InvalidPaletteSpec {
         /// Requested palette specification.
@@ -35,6 +45,17 @@ pub enum Error {
         /// Palette family.
         family: &'static str,
         /// Palette variant.
+        variant: &'static str,
+        /// Requested number of colors.
+        requested: usize,
+        /// Available number of colors.
+        available: usize,
+    },
+    /// More colors were requested than an iTerm variant contains.
+    TooManyItermColorsRequested {
+        /// Canonical iTerm theme name.
+        palette: &'static str,
+        /// Canonical iTerm variant name.
         variant: &'static str,
         /// Requested number of colors.
         requested: usize,
@@ -66,6 +87,12 @@ impl fmt::Display for Error {
             Self::UnknownVariant { family, variant } => {
                 write!(f, "unknown ggsci palette variant `{variant}` for family `{family}`")
             }
+            Self::UnknownItermPalette { palette } => {
+                write!(f, "unknown ggsci iTerm palette `{palette}`")
+            }
+            Self::UnknownItermVariant { variant } => {
+                write!(f, "unknown ggsci iTerm variant `{variant}`")
+            }
             Self::InvalidPaletteSpec { spec } => {
                 write!(f, "invalid palette spec `{spec}`; expected `family:variant`")
             }
@@ -75,7 +102,7 @@ impl fmt::Display for Error {
             Self::InvalidAlpha { alpha } => {
                 write!(
                     f,
-                    "invalid alpha `{alpha}`; expected a finite value in 0.0..=1.0 (continuous interpolation requires alpha > 0.0)"
+                    "invalid alpha `{alpha}`; expected a finite value in 0.0..=1.0 (continuous and iTerm palette operations require alpha > 0.0)"
                 )
             }
             Self::TooManyColorsRequested {
@@ -86,6 +113,15 @@ impl fmt::Display for Error {
             } => write!(
                 f,
                 "requested {requested} colors from discrete palette `{family}:{variant}`, but only {available} category colors are available"
+            ),
+            Self::TooManyItermColorsRequested {
+                palette,
+                variant,
+                requested,
+                available,
+            } => write!(
+                f,
+                "requested {requested} colors from iTerm palette `{palette}` ({variant}), but only {available} terminal colors are available"
             ),
             Self::NotDiscretePalette { family, variant } => write!(
                 f,

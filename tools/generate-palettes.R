@@ -25,8 +25,18 @@ if (!is.list(ggsci_db)) {
 }
 
 excluded_families <- c("gephi", "iterm")
+continuous_families <- c("gsea", "bs5", "material", "tw3")
 families <- names(ggsci_db)
 families <- families[!(families %in% excluded_families)]
+
+missing_continuous_families <- setdiff(continuous_families, families)
+if (length(missing_continuous_families) > 0L) {
+  stop(
+    "known continuous families are missing: ",
+    paste(missing_continuous_families, collapse = ", "),
+    call. = FALSE
+  )
+}
 
 hex_pattern <- "^#[0-9A-Fa-f]{6}$"
 
@@ -52,6 +62,10 @@ records <- list()
 seen_identifiers <- character()
 palette_count <- 0L
 color_count <- 0L
+discrete_palette_count <- 0L
+discrete_color_count <- 0L
+continuous_palette_count <- 0L
+continuous_anchor_color_count <- 0L
 
 for (family in families) {
   family_palettes <- ggsci_db[[family]]
@@ -77,14 +91,70 @@ for (family in families) {
     seen_identifiers <- c(seen_identifiers, identifier)
     palette_count <- palette_count + 1L
     color_count <- color_count + length(colors)
+    kind <- if (family %in% continuous_families) "Continuous" else "Discrete"
+
+    if (kind == "Continuous") {
+      continuous_palette_count <- continuous_palette_count + 1L
+      continuous_anchor_color_count <- continuous_anchor_color_count + length(colors)
+    } else {
+      discrete_palette_count <- discrete_palette_count + 1L
+      discrete_color_count <- discrete_color_count + length(colors)
+    }
 
     records[[length(records) + 1L]] <- list(
       family = family,
       variant = variant,
       identifier = identifier,
+      kind = kind,
       colors = toupper(substring(colors, 2L))
     )
   }
+}
+
+classified_continuous_families <- unique(vapply(
+  records[vapply(records, function(record) record$kind == "Continuous", logical(1L))],
+  function(record) record$family,
+  character(1L)
+))
+unexpected_continuous_families <- setdiff(
+  classified_continuous_families,
+  continuous_families
+)
+if (length(unexpected_continuous_families) > 0L) {
+  stop(
+    "unexpected families classified as continuous: ",
+    paste(unexpected_continuous_families, collapse = ", "),
+    call. = FALSE
+  )
+}
+if (!setequal(classified_continuous_families, continuous_families)) {
+  stop("continuous family classification did not match the validated set", call. = FALSE)
+}
+
+expected_counts <- c(
+  palette_count = 86L,
+  color_count = 946L,
+  discrete_palette_count = 33L,
+  discrete_color_count = 403L,
+  continuous_palette_count = 53L,
+  continuous_anchor_color_count = 543L
+)
+actual_counts <- c(
+  palette_count = palette_count,
+  color_count = color_count,
+  discrete_palette_count = discrete_palette_count,
+  discrete_color_count = discrete_color_count,
+  continuous_palette_count = continuous_palette_count,
+  continuous_anchor_color_count = continuous_anchor_color_count
+)
+if (!identical(actual_counts, expected_counts)) {
+  stop(
+    "unexpected palette counts; expected ",
+    paste(names(expected_counts), expected_counts, sep = "=", collapse = ", "),
+    "; got ",
+    paste(names(actual_counts), actual_counts, sep = "=", collapse = ", "),
+    call. = FALSE
+  )
 }
 
 lines <- c(
@@ -97,6 +167,26 @@ lines <- c(
   "",
   paste0("pub(crate) const PALETTE_COUNT: usize = ", palette_count, ";"),
   paste0("pub(crate) const COLOR_COUNT: usize = ", color_count, ";"),
+  paste0(
+    "pub(crate) const DISCRETE_PALETTE_COUNT: usize = ",
+    discrete_palette_count,
+    ";"
+  ),
+  paste0(
+    "pub(crate) const DISCRETE_COLOR_COUNT: usize = ",
+    discrete_color_count,
+    ";"
+  ),
+  paste0(
+    "pub(crate) const CONTINUOUS_PALETTE_COUNT: usize = ",
+    continuous_palette_count,
+    ";"
+  ),
+  paste0(
+    "pub(crate) const CONTINUOUS_ANCHOR_COLOR_COUNT: usize = ",
+    continuous_anchor_color_count,
+    ";"
+  ),
   "pub(crate) const DATA_SOURCE: &str = \"ggsci/R/palettes.R\";",
   ""
 )
@@ -116,7 +206,9 @@ for (record in records) {
       rust_string(record$family),
       ", ",
       rust_string(record$variant),
-      ", PaletteKind::Static, ",
+      ", PaletteKind::",
+      record$kind,
+      ", ",
       record$identifier,
       "),"
     )
@@ -127,4 +219,7 @@ lines <- c(lines, "];", "")
 dir.create(dirname(output_file), recursive = TRUE, showWarnings = FALSE)
 writeLines(lines, output_file, useBytes = TRUE)
 
-message("generated ", palette_count, " palettes and ", color_count, " colors")
+message(
+  "generated ", palette_count, " palettes and ", color_count, " stored colors (",
+  discrete_palette_count, " discrete / ", continuous_palette_count, " continuous)"
+)

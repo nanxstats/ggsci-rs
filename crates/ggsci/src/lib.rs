@@ -3,21 +3,69 @@
 //! This crate ships checked-in Rust source generated from upstream
 //! `ggsci/R/palettes.R`. It has no runtime dependencies and does not require R
 //! at build time.
+//!
+//! ```
+//! use ggsci::{palette_by_spec, ContinuousOptions};
+//!
+//! let palette = palette_by_spec("material:blue-grey")?;
+//! let colors = palette.interpolate(256)?;
+//! let sampled = palette.sample(256)?;
+//! let reversed = palette.interpolate_with(
+//!     256,
+//!     ContinuousOptions::new().with_reverse(true),
+//! )?;
+//!
+//! assert_eq!(colors, sampled);
+//! assert_eq!(colors.len(), 256);
+//! assert_eq!(reversed.len(), 256);
+//! # Ok::<(), ggsci::Error>(())
+//! ```
 
 mod color;
+mod continuous;
 mod error;
 mod generated;
 mod palette;
 
 pub use color::{Rgb, Rgba};
 pub use error::Error;
-pub use palette::{Palette, PaletteKind, PaletteSpec};
+pub use palette::{ContinuousOptions, Palette, PaletteKind, PaletteSpec};
 
-/// Returns all generated static palettes.
+/// Returns all generated core palettes.
 #[must_use]
 pub fn palettes() -> &'static [Palette] {
     let palettes = generated::palettes::PALETTES;
     debug_assert_eq!(palettes.len(), generated::palettes::PALETTE_COUNT);
+    debug_assert_eq!(
+        palettes
+            .iter()
+            .filter(|palette| palette.is_discrete())
+            .count(),
+        generated::palettes::DISCRETE_PALETTE_COUNT
+    );
+    debug_assert_eq!(
+        palettes
+            .iter()
+            .filter(|palette| palette.is_continuous())
+            .count(),
+        generated::palettes::CONTINUOUS_PALETTE_COUNT
+    );
+    debug_assert_eq!(
+        palettes
+            .iter()
+            .filter(|palette| palette.is_discrete())
+            .map(Palette::len)
+            .sum::<usize>(),
+        generated::palettes::DISCRETE_COLOR_COUNT
+    );
+    debug_assert_eq!(
+        palettes
+            .iter()
+            .filter(|palette| palette.is_continuous())
+            .map(Palette::len)
+            .sum::<usize>(),
+        generated::palettes::CONTINUOUS_ANCHOR_COLOR_COUNT
+    );
     debug_assert_eq!(generated::palettes::DATA_SOURCE, "ggsci/R/palettes.R");
     palettes
 }
@@ -83,7 +131,17 @@ pub fn palette_names() -> impl Iterator<Item = (&'static str, &'static str)> {
         .map(|palette| (palette.family(), palette.variant()))
 }
 
-/// Returns the total number of generated colors.
+/// Filters the core records returned by [`palettes`] by scale semantics.
+///
+/// Future dedicated iTerm and Gephi registries are not flattened into this
+/// concrete [`Palette`] registry.
+pub fn palettes_by_kind(kind: PaletteKind) -> impl Iterator<Item = &'static Palette> {
+    palettes()
+        .iter()
+        .filter(move |palette| palette.kind() == kind)
+}
+
+/// Returns the number of stored source colors across the core registry.
 #[must_use]
 pub const fn total_color_count() -> usize {
     generated::palettes::COLOR_COUNT

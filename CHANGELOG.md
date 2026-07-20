@@ -5,7 +5,7 @@
 ### Breaking changes
 
 - `PaletteKind::Static` was replaced with `PaletteKind::Discrete`.
-  The old name described storage rather than scale semantics.
+  The old name described storage rather than scale semantics (#3).
 - `Palette::take()`, `take_hex()`, and `cycle()` now apply only to
   discrete palettes. Use `interpolate()` for continuous palettes or
   `sample()` when accepting either kind.
@@ -30,7 +30,7 @@
 
 ## ggsci-rs 0.1.0
 
-- Initial Rust workspace scaffold.
+- Initial Rust workspace scaffold (#1).
 - Added the publishable `ggsci` crate with static palettes
   (excluding Gephi and iTerm palettes) generated from upstream.
 - Added private scaffold crates for future ratatui and ggsql integrations.

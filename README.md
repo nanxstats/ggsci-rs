@@ -3,10 +3,11 @@
 Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
-The `ggsci` 0.2.0 release provides 33 discrete palette variants and 53
-continuous variants from the `gsea`, `bs5`, `material`, and `tw3` families.
-Continuous colors reproduce ggsci for R's CIE Lab/FMM spline interpolation.
-Gephi palettes, iTerm palettes, ratatui conversions, and native ggsql extension
+The `ggsci` 0.3.0 release provides a core registry of 33 discrete palette
+variants and 53 continuous variants from the `gsea`, `bs5`, `material`, and
+`tw3` families, plus all 551 fixed discrete iTerm palettes through a dedicated
+typed registry. Continuous colors reproduce ggsci for R's CIE Lab/FMM spline
+interpolation. Gephi palettes, ratatui conversions, and native ggsql extension
 APIs remain future work.
 
 ## Usage
@@ -41,20 +42,46 @@ is stored or generated is an orthogonal implementation detail. Accordingly,
 `Palette::colors()` contains category colors for discrete palettes and the
 canonical interpolation anchors for continuous palettes.
 
+iTerm themes use their own API because each theme has normal and bright
+variants plus the fixed terminal-channel order Blue, Yellow, Red, Cyan, Green,
+Magenta:
+
+```rust
+use ggsci::{iterm_palette, ItermVariant};
+
+let rose_pine = iterm_palette("Rose Pine")?;
+let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+
+assert_eq!(colors.len(), 6);
+# Ok::<(), ggsci::Error>(())
+```
+
+Theme lookup is case-insensitive and treats `_`, `-`, and whitespace as
+interchangeable separators while preserving other punctuation. Variant parsing
+is also case-insensitive. Every `ItermPalette` reports
+`PaletteKind::Discrete`; normal/bright is an `ItermVariant`, not a palette
+kind. The iTerm records are not flattened into `palettes()` or
+`palettes_by_kind()` because the core `Palette` model cannot preserve their two
+variants and terminal-channel ordering. The complete iTerm data is included in
+the normal crate package without feature flags.
+
 `crates/ggsci` is the only publishable crate in the workspace. The ratatui and
 ggsql crates are private scaffolds for later integrations.
 
 ## Maintenance
 
-Palette data and R-generated continuous golden fixtures are checked in.
-To refresh both from the vendored upstream source during development:
+Core and iTerm palette data and R-generated continuous golden fixtures are
+checked in. To refresh all of them from the vendored upstream source during
+development:
 
 ```bash
 cargo xtask update-palettes
 ```
 
-This maintainer command requires R. Building, testing, documenting, and using
-the published crate do not require R or the vendor sources.
+The command regenerates the core registry, continuous fixtures, and dedicated
+iTerm registry, then formats the workspace. It requires R. Building, testing,
+documenting, and using the published crate do not require R or the vendor
+sources.
 
 ## Related work
 

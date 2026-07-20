@@ -1,8 +1,8 @@
 //! Scientific and sci-fi color palettes from the R package ggsci.
 //!
 //! This crate ships checked-in Rust source generated from upstream
-//! `ggsci/R/palettes.R`. It has no runtime dependencies and does not require R
-//! at build time.
+//! `ggsci/R/palettes.R` and `ggsci/R/palettes-iterm.R`. It has no runtime
+//! dependencies and does not require R at build time.
 //!
 //! ```
 //! use ggsci::{palette_by_spec, ContinuousOptions};
@@ -20,15 +20,34 @@
 //! assert_eq!(reversed.len(), 256);
 //! # Ok::<(), ggsci::Error>(())
 //! ```
+//!
+//! iTerm themes use a dedicated fixed-discrete registry that preserves their
+//! normal/bright variants and terminal-channel ordering:
+//!
+//! ```
+//! use ggsci::{iterm_palette, ItermVariant};
+//!
+//! let rose_pine = iterm_palette("Rose Pine")?;
+//! let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+//!
+//! assert_eq!(colors.len(), 6);
+//! # Ok::<(), ggsci::Error>(())
+//! ```
 
 mod color;
 mod continuous;
 mod error;
 mod generated;
+mod iterm;
+mod normalize;
 mod palette;
 
 pub use color::{Rgb, Rgba};
 pub use error::Error;
+pub use iterm::{
+    iterm_palette, iterm_palette_count, iterm_palette_names, iterm_palettes,
+    iterm_total_color_count, ItermChannel, ItermPalette, ItermVariant, ITERM_CHANNELS,
+};
 pub use palette::{ContinuousOptions, Palette, PaletteKind, PaletteSpec};
 
 /// Returns all generated core palettes.
@@ -80,6 +99,8 @@ pub fn palettes() -> &'static [Palette] {
 /// Returns [`Error::UnknownFamily`] if the family is not known, or
 /// [`Error::UnknownVariant`] if the family exists but the variant does not.
 pub fn palette(family: &str, variant: &str) -> Result<&'static Palette, Error> {
+    use normalize::key_matches;
+
     let family_exists = palettes()
         .iter()
         .any(|palette| key_matches(palette.family(), family));
@@ -133,8 +154,8 @@ pub fn palette_names() -> impl Iterator<Item = (&'static str, &'static str)> {
 
 /// Filters the core records returned by [`palettes`] by scale semantics.
 ///
-/// Future dedicated iTerm and Gephi registries are not flattened into this
-/// concrete [`Palette`] registry.
+/// The dedicated iTerm registry and any future Gephi registry are not
+/// flattened into this concrete [`Palette`] registry.
 pub fn palettes_by_kind(kind: PaletteKind) -> impl Iterator<Item = &'static Palette> {
     palettes()
         .iter()
@@ -145,22 +166,6 @@ pub fn palettes_by_kind(kind: PaletteKind) -> impl Iterator<Item = &'static Pale
 #[must_use]
 pub const fn total_color_count() -> usize {
     generated::palettes::COLOR_COUNT
-}
-
-fn key_matches(canonical: &str, requested: &str) -> bool {
-    normalize_key(canonical) == normalize_key(requested)
-}
-
-fn normalize_key(input: &str) -> String {
-    input
-        .trim()
-        .chars()
-        .map(|ch| match ch {
-            '_' | '-' => ' ',
-            ch if ch.is_whitespace() => ' ',
-            ch => ch.to_ascii_lowercase(),
-        })
-        .collect()
 }
 
 #[cfg(test)]

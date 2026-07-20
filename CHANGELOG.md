@@ -1,5 +1,27 @@
 # Changelog
 
+## ggsci-rs 0.3.0
+
+### New features
+
+- Added 551 fixed discrete iTerm palettes through a dedicated typed registry,
+  with 6,612 checked-in colors across normal and bright variants (#7).
+- Added typed iTerm variants and terminal channels, normalized theme lookup,
+  fixed-length RGB/hex/RGBA access, explicit cycling, and registry count/name
+  APIs. Every iTerm palette reports `PaletteKind::Discrete`.
+
+### Data model and maintenance
+
+- Kept iTerm themes separate from the 86-record core `Palette` registry so
+  their paired normal/bright variants and fixed Blue, Yellow, Red, Cyan, Green,
+  Magenta channel ordering remain explicit. Normal/bright is an
+  `ItermVariant`, not a palette kind.
+- Added deterministic iTerm Rust generation to `cargo xtask update-palettes`;
+  builds and tests use checked-in data and do not require R or vendored sources.
+  iTerm data ships without feature flags.
+- Left the core registry unchanged at 86 records and 946 stored source colors:
+  33 discrete records and 53 continuous records.
+
 ## ggsci-rs 0.2.0
 
 ### Breaking changes

@@ -97,6 +97,21 @@ a theme variant and fixed terminal-channel order, while Gephi needs a generation
 algorithm and optional seed. Those are data-access and generation concerns,
 orthogonal to scale semantics.
 
+## Interactive palette gallery
+
+Run the full interactive example from the workspace root:
+
+```bash
+cargo run -p ggsci-ratatui --example palette-gallery
+```
+
+It presents every core, iTerm, and Gephi palette in a responsive, scrollable
+card grid and can switch instantly between TrueColor and ANSI-256 output. The
+original `swatch` example is intentionally minimal; `palette-gallery` is a
+complete Ratatui application with tabs, deterministic seeded Gephi cards,
+resize-safe grid navigation, and keyboard help. See the
+[example README](examples/palette-gallery/README.md) for all controls.
+
 ## Alpha compositing
 
 Ratatui colors do not have an alpha channel. `rgba_over()` therefore performs

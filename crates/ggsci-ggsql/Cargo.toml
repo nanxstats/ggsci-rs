@@ -10,7 +10,7 @@ description = "Private scaffold for future ggsci ggsql integration"
 publish = false
 
 [dependencies]
-ggsci = { version = "0.4.0", path = "../ggsci" }
+ggsci = { version = "0.4.1", path = "../ggsci" }
 
 [lints]
 workspace = true

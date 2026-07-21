@@ -4,13 +4,13 @@ Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
 The `ggsci` 0.4.0 release provides a core registry of 33 discrete palette
-variants and 53 continuous variants from the `gsea`, `bs5`, `material`, and
-`tw3` families, all 551 fixed discrete iTerm palettes, and all 17 Gephi
-generative discrete palettes. Continuous colors reproduce ggsci for R's CIE
-Lab/FMM spline interpolation. The Gephi engine is a pure Rust port of the
-canonical algorithm in `ggsci/R/discrete-gephi.R`.
+variants and 53 continuous variants, all 551 fixed discrete iTerm palettes,
+and all 17 Gephi generative discrete palettes.
 
-## Usage
+## Core palettes
+
+The core registry contains the stored discrete palettes and the continuous
+palettes represented by canonical interpolation anchors.
 
 ```rust
 let palette = ggsci::palette("npg", "nrc")?;
@@ -41,6 +41,31 @@ assert_eq!(reversed.len(), 256);
 is stored or generated is an orthogonal implementation detail. Accordingly,
 `Palette::colors()` contains category colors for discrete palettes and the
 canonical interpolation anchors for continuous palettes.
+
+## iTerm palettes
+
+iTerm themes use their own API because each theme has normal and bright
+variants plus the fixed terminal-channel order Blue, Yellow, Red, Cyan, Green,
+Magenta:
+
+```rust
+use ggsci::{iterm_palette, ItermVariant};
+
+let rose_pine = iterm_palette("Rose Pine")?;
+let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+
+assert_eq!(colors.len(), 6);
+# Ok::<(), ggsci::Error>(())
+```
+
+Theme lookup is case-insensitive and treats `_`, `-`, and whitespace as
+interchangeable separators while preserving other punctuation. Variant parsing
+is also case-insensitive. Every `ItermPalette` reports
+`PaletteKind::Discrete`; normal/bright is an `ItermVariant`, not a palette
+kind. The iTerm records are not flattened into `palettes()` or
+`palettes_by_kind()` because the core `Palette` model cannot preserve their two
+variants and terminal-channel ordering. The complete iTerm data is included in
+the normal crate package without feature flags.
 
 ## Gephi palettes
 
@@ -86,31 +111,10 @@ algorithm and random state. Its definitions are not duplicated in the stored
 core `palettes()` or `palettes_by_kind()` registry even though both Gephi and
 stored categorical palettes have discrete scale semantics.
 
-iTerm themes use their own API because each theme has normal and bright
-variants plus the fixed terminal-channel order Blue, Yellow, Red, Cyan, Green,
-Magenta:
+## Workspace
 
-```rust
-use ggsci::{iterm_palette, ItermVariant};
-
-let rose_pine = iterm_palette("Rose Pine")?;
-let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
-
-assert_eq!(colors.len(), 6);
-# Ok::<(), ggsci::Error>(())
-```
-
-Theme lookup is case-insensitive and treats `_`, `-`, and whitespace as
-interchangeable separators while preserving other punctuation. Variant parsing
-is also case-insensitive. Every `ItermPalette` reports
-`PaletteKind::Discrete`; normal/bright is an `ItermVariant`, not a palette
-kind. The iTerm records are not flattened into `palettes()` or
-`palettes_by_kind()` because the core `Palette` model cannot preserve their two
-variants and terminal-channel ordering. The complete iTerm data is included in
-the normal crate package without feature flags.
-
-`crates/ggsci` is the only publishable crate in the workspace. The ratatui and
-ggsql crates are private scaffolds for later integrations.
+`crates/ggsci` is the only publishable crate in the workspace.
+The ratatui and ggsql crates are private scaffolds for later integrations.
 
 ## Maintenance
 

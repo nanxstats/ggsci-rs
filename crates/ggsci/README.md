@@ -10,10 +10,7 @@ individual colors, while `PaletteKind::Continuous` maps a continuous domain
 through an interpolated gradient. These are scale semantics: whether palette
 data is stored or generated is an orthogonal implementation detail.
 
-The `gsea`, `bs5`, `material`, and `tw3` families are continuous. Their
-arbitrary-length output reproduces ggsci for R's
-`colorRamp(..., space = "Lab", interpolate = "spline")`, including its FMM
-cubic spline, gamut handling, rounding, and endpoint behavior.
+## Core palettes
 
 Use `take()` for discrete category colors:
 
@@ -24,6 +21,11 @@ let colors = palette.take_hex(3)?;
 assert_eq!(colors, ["#E64B35", "#4DBBD5", "#00A087"]);
 # Ok::<(), ggsci::Error>(())
 ```
+
+The `gsea`, `bs5`, `material`, and `tw3` families are continuous. Their
+arbitrary-length output reproduces ggsci for R's
+`colorRamp(..., space = "Lab", interpolate = "spline")`, including its FMM
+cubic spline, gamut handling, rounding, and endpoint behavior.
 
 Use `interpolate()` for a continuous gradient, or `sample()` when accepting
 either kind:
@@ -49,10 +51,10 @@ assert_eq!(translucent.len(), 256);
 ```
 
 `Palette::colors()` returns canonical source colors: category colors for a
-discrete palette and interpolation anchors for a continuous palette. Its
-length therefore does not limit how many colors a continuous palette can
-produce. Reverse is applied after interpolation, matching R. The continuous
-RGBA methods accept finite alpha values in `(0.0, 1.0]`.
+discrete palette and interpolation anchors for a continuous palette.
+Its length therefore does not limit how many colors a continuous palette can
+produce. Reverse is applied after interpolation, matching R.
+The continuous RGBA methods accept finite alpha values in `(0.0, 1.0]`.
 
 Lookup is case-insensitive and accepts `_`, `-`, and spaces interchangeably:
 
@@ -63,13 +65,46 @@ assert_eq!(palette.variant(), "blue-grey");
 # Ok::<(), ggsci::Error>(())
 ```
 
+## iTerm palettes
+
+iTerm is a fixed discrete palette family exposed through a dedicated typed
+registry:
+
+```rust
+use ggsci::{iterm_palette, ItermVariant};
+
+let rose_pine = iterm_palette("Rose Pine")?;
+let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+
+assert_eq!(colors.len(), 6);
+# Ok::<(), ggsci::Error>(())
+```
+
+Use `iterm_palettes()` to traverse the registry,
+`iterm_palette_names()` to list canonical names, and `iterm_palette()` for
+case-insensitive theme lookup. Theme lookup treats `_`, `-`, and whitespace as
+interchangeable separators while preserving punctuation such as the `+` that
+distinguishes `Dracula+` from `Dracula`. `ItermVariant::parse()` accepts normal
+and bright case-insensitively.
+
+Every `ItermPalette` reports `PaletteKind::Discrete`. Normal and bright are
+theme variants represented by `ItermVariant`, not palette kinds. Within each
+variant, the six colors have the fixed channel ordering Blue, Yellow, Red,
+Cyan, Green, Magenta, also exposed as `ITERM_CHANNELS`.
+
+iTerm records are deliberately not flattened into the core `palettes()` or
+`palettes_by_kind()` registry. Although they share discrete scale semantics,
+the core `Palette` data model cannot preserve a theme's paired normal/bright
+variants and fixed terminal-channel ordering. The dedicated registry keeps
+that structure explicit.
+
 ## Gephi palettes
 
 Gephi palettes are generative discrete palettes ported from the palette engine
-in Gephi via the canonical implementation in `ggsci/R/discrete-gephi.R`. Every
-`GephiPalette` reports `PaletteKind::Discrete`. Generative describes how its
-colors are produced, while discrete describes how the result maps to category
-values.
+in Gephi via the canonical implementation in `ggsci/R/discrete-gephi.R`.
+Every `GephiPalette` reports `PaletteKind::Discrete`. Generative describes
+how its colors are produced, while discrete describes how the result maps to
+category values.
 
 ```rust
 use ggsci::gephi_palette;
@@ -113,43 +148,13 @@ they require an algorithm and random state instead of stored color records.
 That dedicated API reflects their generation mechanism, not a different scale
 kind.
 
-## iTerm palettes
-
-iTerm is a fixed discrete palette family exposed through a dedicated typed
-registry:
-
-```rust
-use ggsci::{iterm_palette, ItermVariant};
-
-let rose_pine = iterm_palette("Rose Pine")?;
-let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
-
-assert_eq!(colors.len(), 6);
-# Ok::<(), ggsci::Error>(())
-```
-
-Use `iterm_palettes()` to traverse the registry,
-`iterm_palette_names()` to list canonical names, and `iterm_palette()` for
-case-insensitive theme lookup. Theme lookup treats `_`, `-`, and whitespace as
-interchangeable separators while preserving punctuation such as the `+` that
-distinguishes `Dracula+` from `Dracula`. `ItermVariant::parse()` accepts normal
-and bright case-insensitively.
-
-Every `ItermPalette` reports `PaletteKind::Discrete`. Normal and bright are
-theme variants represented by `ItermVariant`, not palette kinds. Within each
-variant, the six colors have the fixed channel ordering Blue, Yellow, Red,
-Cyan, Green, Magenta, also exposed as `ITERM_CHANNELS`.
-
-iTerm records are deliberately not flattened into the core `palettes()` or
-`palettes_by_kind()` registry. Although they share discrete scale semantics,
-the core `Palette` data model cannot preserve a theme's paired normal/bright
-variants and fixed terminal-channel ordering. The dedicated registry keeps
-that structure explicit.
+## Packaging and maintenance
 
 The complete core, iTerm, and Gephi metadata is included without feature flags.
-The crate has no build script. Generated Rust data and R-generated
-exact-channel fixtures are checked in and run as ordinary Rust integration
-tests. R is only a maintainer dependency; builds do not require R, Python,
-NumPy, matplotlib, jsonlite, vendor sources, or network access. The single
+The crate has no build script. Generated Rust data and R-generated exact-channel
+fixtures are checked in and run as ordinary Rust integration tests.
+
+R is only a maintainer dependency; builds do not require R, Python, NumPy,
+matplotlib, jsonlite, vendor sources, or network access. The single
 `cargo xtask update-palettes` command regenerates the core registry, continuous
 fixtures, iTerm registry, and Gephi filter registry, then formats the workspace.

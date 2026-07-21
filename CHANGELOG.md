@@ -1,5 +1,13 @@
 # Changelog
 
+## ggsci-rs 0.6.2
+
+### Documentation and examples
+
+- Add an interactive Ratatui palette gallery TUI app with responsive
+  palette cards, all four public registries, deterministic Gephi output,
+  TrueColor and ANSI-256 modes, keyboard navigation, and headless tests (#21).
+
 ## ggsci-rs 0.6.1
 
 This release synchronizes `ggsci`, `ggsci-ratatui`, and `ggsci-ggsql` at

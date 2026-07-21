@@ -1,5 +1,11 @@
 # Changelog
 
+## ggsci-rs 0.4.1
+
+### Documentation
+
+- Add readme badge and improve code examples (#13).
+
 ## ggsci-rs 0.4.0
 
 ### New features

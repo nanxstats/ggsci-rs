@@ -1,2 +1,5 @@
 [alias]
 xtask = "run --package xtask --"
+
+[env]
+GGSQL_SKIP_GENERATE = "1"

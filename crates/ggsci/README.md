@@ -1,13 +1,14 @@
 # ggsci
 
 Scientific and sci-fi color palettes from the R package
-[ggsci](https://github.com/nanxstats/ggsci), packaged as static Rust data.
+[ggsci](https://github.com/nanxstats/ggsci), packaged as Rust data and native
+palette generation algorithms.
 
-This crate includes all non-Gephi core palettes and all 551 iTerm themes
-generated from upstream. `PaletteKind::Discrete` maps categories to individual
-colors, while `PaletteKind::Continuous` maps a continuous domain through an
-interpolated gradient. These are scale semantics: whether palette data is
-stored or generated is an orthogonal implementation detail.
+This crate includes all 86 core palettes, all 551 iTerm themes, and all 17
+Gephi generators from upstream. `PaletteKind::Discrete` maps categories to
+individual colors, while `PaletteKind::Continuous` maps a continuous domain
+through an interpolated gradient. These are scale semantics: whether palette
+data is stored or generated is an orthogonal implementation detail.
 
 The `gsea`, `bs5`, `material`, and `tw3` families are continuous. Their
 arbitrary-length output reproduces ggsci for R's
@@ -62,6 +63,56 @@ assert_eq!(palette.variant(), "blue-grey");
 # Ok::<(), ggsci::Error>(())
 ```
 
+## Gephi palettes
+
+Gephi palettes are generative discrete palettes ported from the palette engine
+in Gephi via the canonical implementation in `ggsci/R/discrete-gephi.R`. Every
+`GephiPalette` reports `PaletteKind::Discrete`. Generative describes how its
+colors are produced, while discrete describes how the result maps to category
+values.
+
+```rust
+use ggsci::gephi_palette;
+
+let gephi = gephi_palette("fancy-light")?;
+
+let colors = gephi.generate_with_seed(20, 42)?;
+
+assert_eq!(colors.len(), 20);
+
+# Ok::<(), ggsci::Error>(())
+```
+
+Use `gephi_palettes()` to inspect the dedicated registry,
+`gephi_palette_names()` to list canonical names, and `gephi_palette()` for
+normalized lookup. Available names are `default`, `fancy_light`, `fancy_dark`,
+`shades`, `tarnish`, `pastel`, `pimp`, `intense`, `fluo`, `red_roses`,
+`ochre_sand`, `yellow_lime`, `green_mint`, `ice_cube`, `blue_ocean`,
+`indigo_night`, and `purple_wine`. Lookup is case-insensitive and treats `_`,
+`-`, and whitespace as interchangeable.
+
+`generate_with_seed()` and `generate_rgba_with_seed()` are reproducible within
+this crate. Seeded generation uses `ChaCha8Rng`, four SplitMix64 outputs in
+little-endian order to expand a `u64` seed, and the high 53 bits of each
+`next_u64()` output for uniform floating-point values. Golden tests lock this
+design against accidental patch-release changes. It does not promise R or
+NumPy seed compatibility. `generate()` and `generate_rgba()` seed a private RNG
+from fresh operating-system randomness and do not mutate an application RNG.
+RGBA alpha is applied after RGB generation and must be finite and in
+`(0.0, 1.0]`.
+
+The algorithm uses rejection sampling, filtered k-means, and farthest-first
+ordering. Quality uses 50 iterations through 50 colors, then 25 through 100,
+10 through 200, 5 through 300, and 2 above 300. A thread-safe indexed cache
+filters the deterministic 9,261-point Lab-like sample grid once for all 17
+filters. Output palettes are not cached, so generation time still grows with
+the requested color count.
+
+Gephi definitions stay out of `palettes()` and `palettes_by_kind()` because
+they require an algorithm and random state instead of stored color records.
+That dedicated API reflects their generation mechanism, not a different scale
+kind.
+
 ## iTerm palettes
 
 iTerm is a fixed discrete palette family exposed through a dedicated typed
@@ -95,9 +146,10 @@ the core `Palette` data model cannot preserve a theme's paired normal/bright
 variants and fixed terminal-channel ordering. The dedicated registry keeps
 that structure explicit.
 
-The complete core and iTerm data is included without feature flags. The crate
-has no runtime dependencies and no build script. Generated Rust data and
-R-generated exact-channel fixtures are checked in and run as ordinary Rust
-integration tests. R is only a maintainer dependency. The single
+The complete core, iTerm, and Gephi metadata is included without feature flags.
+The crate has no build script. Generated Rust data and R-generated
+exact-channel fixtures are checked in and run as ordinary Rust integration
+tests. R is only a maintainer dependency; builds do not require R, Python,
+NumPy, matplotlib, jsonlite, vendor sources, or network access. The single
 `cargo xtask update-palettes` command regenerates the core registry, continuous
-fixtures, and iTerm registry, then formats the workspace.
+fixtures, iTerm registry, and Gephi filter registry, then formats the workspace.

@@ -5,22 +5,40 @@
 //! palette engine. It does not require R, Python, or network access at build
 //! time.
 //!
+//! Use [`Palette::take`] for discrete category colors:
+//!
+//! ```
+//! use ggsci::palette_by_spec;
+//!
+//! fn main() -> Result<(), ggsci::Error> {
+//!     let palette = palette_by_spec("observable:observable10")?;
+//!     let colors = palette.take_hex(3)?;
+//!
+//!     assert_eq!(colors, ["#4269D0", "#EFB118", "#FF725C"]);
+//!     Ok(())
+//! }
+//! ```
+//!
+//! Use [`Palette::interpolate`] for continuous gradient samples:
+//!
 //! ```
 //! use ggsci::{palette_by_spec, ContinuousOptions};
 //!
-//! let palette = palette_by_spec("material:blue-grey")?;
-//! let colors = palette.interpolate(256)?;
-//! let sampled = palette.sample(256)?;
-//! let reversed = palette.interpolate_with(
-//!     256,
-//!     ContinuousOptions::new().with_reverse(true),
-//! )?;
+//! fn main() -> Result<(), ggsci::Error> {
+//!     let palette = palette_by_spec("material:blue-grey")?;
+//!     let colors = palette.interpolate(256)?;
+//!     let reversed = palette.interpolate_with(
+//!         256,
+//!         ContinuousOptions::new().with_reverse(true),
+//!     )?;
 //!
-//! assert_eq!(colors, sampled);
-//! assert_eq!(colors.len(), 256);
-//! assert_eq!(reversed.len(), 256);
-//! # Ok::<(), ggsci::Error>(())
+//!     assert_eq!(reversed, colors.into_iter().rev().collect::<Vec<_>>());
+//!     Ok(())
+//! }
 //! ```
+//!
+//! Use [`Palette::sample`] for kind-aware dispatch when accepting either
+//! palette kind.
 //!
 //! iTerm themes use a dedicated fixed-discrete registry that preserves their
 //! normal/bright variants and terminal-channel ordering:
@@ -28,11 +46,13 @@
 //! ```
 //! use ggsci::{iterm_palette, ItermVariant};
 //!
-//! let rose_pine = iterm_palette("Rose Pine")?;
-//! let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+//! fn main() -> Result<(), ggsci::Error> {
+//!     let rose_pine = iterm_palette("Rose Pine")?;
+//!     let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
 //!
-//! assert_eq!(colors.len(), 6);
-//! # Ok::<(), ggsci::Error>(())
+//!     assert_eq!(colors.len(), 6);
+//!     Ok(())
+//! }
 //! ```
 //!
 //! Gephi palettes are generative discrete palettes with a dedicated API:
@@ -40,11 +60,13 @@
 //! ```
 //! use ggsci::gephi_palette;
 //!
-//! let gephi = gephi_palette("fancy-light")?;
-//! let colors = gephi.generate_with_seed(20, 42)?;
+//! fn main() -> Result<(), ggsci::Error> {
+//!     let gephi = gephi_palette("fancy-light")?;
+//!     let colors = gephi.generate_with_seed(20, 42)?;
 //!
-//! assert_eq!(colors.len(), 20);
-//! # Ok::<(), ggsci::Error>(())
+//!     assert_eq!(colors.len(), 20);
+//!     Ok(())
+//! }
 //! ```
 
 mod color;

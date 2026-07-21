@@ -35,7 +35,17 @@
 - `ggsci-ratatui` depends on the registry version of `ratatui-core`, not the
   vendored path. Its APIs adapt core, fixed iTerm, and generative Gephi output;
   they do not introduce another palette kind.
-- `ggsci-ggsql` remains unpublished.
+- `ggsci-ggsql` is publishable and matches ggsql 0.4.1's Rust 1.86 MSRV and
+  Rust 2021 edition. It depends on the registry ggsql crate with default
+  features disabled, never on `vendor/ggsql`.
+- ggsql does not currently expose a third-party palette provider or registry.
+  Integrate ggsci by emitting explicit color arrays, preserve source
+  `PaletteKind` separately from adapter `ScaleKind`, and do not patch or modify
+  `vendor/ggsql`.
+- `tree-sitter-ggsql` 0.4.1 regenerates its parser unless
+  `GGSQL_SKIP_GENERATE=1` is set. Workspace configuration and CI use that
+  upstream-supported setting to compile its packaged generated `src/parser.c`
+  without `tree-sitter-cli`.
 - Do not add feature flags for now. The crate remains a packaged deal.
 - Before publishing, run:
 
@@ -46,12 +56,15 @@
   cargo test --workspace --all-targets
   cargo doc -p ggsci --no-deps
   cargo doc -p ggsci-ratatui --no-deps
+  cargo doc -p ggsci-ggsql --no-deps
   cargo package -p ggsci --list
   cargo package -p ggsci-ratatui --list
+  cargo package -p ggsci-ggsql --list
   cargo publish -p ggsci --dry-run
   cargo publish -p ggsci-ratatui --dry-run
+  cargo publish -p ggsci-ggsql --dry-run
   ```
 
-  The adapter dry-run can fail until the matching `ggsci` release has reached
-  the registry. Do not weaken its registry version requirement to bypass the
-  release order constraint.
+  The adapter dry-runs can fail until the matching `ggsci` release has reached
+  the registry. Do not weaken their registry version requirements to bypass
+  the release order constraint.

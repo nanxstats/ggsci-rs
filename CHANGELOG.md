@@ -1,5 +1,34 @@
 # Changelog
 
+## ggsci-rs 0.4.0
+
+### New features
+
+- Added all 17 generative discrete Gephi palettes through a dedicated filter
+  registry and pure Rust palette engine. Every Gephi generator reports
+  `PaletteKind::Discrete` (#9).
+- Added normalized Gephi lookup and listing APIs, arbitrary-length RGB and RGBA
+  generation, reproducible seeded generation, and convenient nondeterministic
+  generation from fresh operating-system randomness.
+- Defined stable seeded output with `ChaCha8Rng`, explicit SplitMix64 seed
+  expansion, and a crate-owned 53-bit uniform floating-point mapping.
+  Golden tests lock the design; Rust seeds are intentionally not promised
+  to match R or NumPy streams.
+
+### Maintenance
+
+- Ported rejection sampling, normalized Lab-like filtering, k-means center
+  replacement, free-sample removal, farthest-first ordering, color conversion,
+  clipping, transfer, and rounding from the canonical R implementation.
+- Added a thread-safe indexed cache for the valid 9,261-point sample grids.
+  Generated palettes are not cached, and the upstream quality schedule reduces
+  iteration counts as requested palette sizes grow.
+- Added deterministic Gephi metadata generation to `cargo xtask update-palettes`.
+  Builds and tests use the checked-in 17-filter registry and require no
+  R, Python, NumPy, or network access.
+- Kept Gephi definitions separate from the core registry because they require
+  an algorithm and random state.
+
 ## ggsci-rs 0.3.0
 
 ### New features

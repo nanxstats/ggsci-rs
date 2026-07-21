@@ -1,8 +1,9 @@
 //! Scientific and sci-fi color palettes from the R package ggsci.
 //!
 //! This crate ships checked-in Rust source generated from upstream
-//! `ggsci/R/palettes.R` and `ggsci/R/palettes-iterm.R`. It has no runtime
-//! dependencies and does not require R at build time.
+//! `ggsci/R/palettes.R` and `ggsci/R/palettes-iterm.R`, plus a pure Rust Gephi
+//! palette engine. It does not require R, Python, or network access at build
+//! time.
 //!
 //! ```
 //! use ggsci::{palette_by_spec, ContinuousOptions};
@@ -33,17 +34,34 @@
 //! assert_eq!(colors.len(), 6);
 //! # Ok::<(), ggsci::Error>(())
 //! ```
+//!
+//! Gephi palettes are generative discrete palettes with a dedicated API:
+//!
+//! ```
+//! use ggsci::gephi_palette;
+//!
+//! let gephi = gephi_palette("fancy-light")?;
+//! let colors = gephi.generate_with_seed(20, 42)?;
+//!
+//! assert_eq!(colors.len(), 20);
+//! # Ok::<(), ggsci::Error>(())
+//! ```
 
 mod color;
 mod continuous;
 mod error;
 mod generated;
+mod gephi;
 mod iterm;
 mod normalize;
 mod palette;
 
 pub use color::{Rgb, Rgba};
 pub use error::Error;
+pub use gephi::{
+    gephi_palette, gephi_palette_count, gephi_palette_names, gephi_palettes, GephiFilter,
+    GephiPalette,
+};
 pub use iterm::{
     iterm_palette, iterm_palette_count, iterm_palette_names, iterm_palettes,
     iterm_total_color_count, ItermChannel, ItermPalette, ItermVariant, ITERM_CHANNELS,
@@ -154,8 +172,8 @@ pub fn palette_names() -> impl Iterator<Item = (&'static str, &'static str)> {
 
 /// Filters the core records returned by [`palettes`] by scale semantics.
 ///
-/// The dedicated iTerm registry and any future Gephi registry are not
-/// flattened into this concrete [`Palette`] registry.
+/// The dedicated iTerm and Gephi registries are not flattened into this
+/// concrete [`Palette`] registry.
 pub fn palettes_by_kind(kind: PaletteKind) -> impl Iterator<Item = &'static Palette> {
     palettes()
         .iter()

@@ -20,6 +20,18 @@ pub enum Error {
         /// Requested iTerm theme name.
         palette: String,
     },
+    /// The requested Gephi palette does not exist.
+    UnknownGephiPalette {
+        /// Requested Gephi palette name.
+        palette: String,
+    },
+    /// A Gephi palette could not be generated.
+    GephiGenerationFailed {
+        /// Canonical Gephi palette name.
+        palette: &'static str,
+        /// Description of the generation failure.
+        reason: String,
+    },
     /// The requested iTerm variant does not exist.
     UnknownItermVariant {
         /// Requested iTerm variant name.
@@ -90,6 +102,12 @@ impl fmt::Display for Error {
             Self::UnknownItermPalette { palette } => {
                 write!(f, "unknown ggsci iTerm palette `{palette}`")
             }
+            Self::UnknownGephiPalette { palette } => {
+                write!(f, "unknown ggsci Gephi palette `{palette}`")
+            }
+            Self::GephiGenerationFailed { palette, reason } => {
+                write!(f, "could not generate Gephi palette `{palette}`: {reason}")
+            }
             Self::UnknownItermVariant { variant } => {
                 write!(f, "unknown ggsci iTerm variant `{variant}`")
             }
@@ -102,7 +120,7 @@ impl fmt::Display for Error {
             Self::InvalidAlpha { alpha } => {
                 write!(
                     f,
-                    "invalid alpha `{alpha}`; expected a finite value in 0.0..=1.0 (continuous and iTerm palette operations require alpha > 0.0)"
+                    "invalid alpha `{alpha}`; expected a finite value in 0.0..=1.0 (continuous, iTerm, and Gephi palette operations require alpha > 0.0)"
                 )
             }
             Self::TooManyColorsRequested {

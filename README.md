@@ -3,12 +3,12 @@
 Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
-The `ggsci` 0.3.0 release provides a core registry of 33 discrete palette
+The `ggsci` 0.4.0 release provides a core registry of 33 discrete palette
 variants and 53 continuous variants from the `gsea`, `bs5`, `material`, and
-`tw3` families, plus all 551 fixed discrete iTerm palettes through a dedicated
-typed registry. Continuous colors reproduce ggsci for R's CIE Lab/FMM spline
-interpolation. Gephi palettes, ratatui conversions, and native ggsql extension
-APIs remain future work.
+`tw3` families, all 551 fixed discrete iTerm palettes, and all 17 Gephi
+generative discrete palettes. Continuous colors reproduce ggsci for R's CIE
+Lab/FMM spline interpolation. The Gephi engine is a pure Rust port of the
+canonical algorithm in `ggsci/R/discrete-gephi.R`.
 
 ## Usage
 
@@ -42,6 +42,50 @@ is stored or generated is an orthogonal implementation detail. Accordingly,
 `Palette::colors()` contains category colors for discrete palettes and the
 canonical interpolation anchors for continuous palettes.
 
+## Gephi palettes
+
+Gephi palettes generate visually distinct category colors for a discrete
+scale. Every `GephiPalette` reports `PaletteKind::Discrete`; generation is its
+mechanism, not a third palette kind.
+
+```rust
+use ggsci::gephi_palette;
+
+let gephi = gephi_palette("fancy-light")?;
+
+let colors = gephi.generate_with_seed(20, 42)?;
+
+assert_eq!(colors.len(), 20);
+
+# Ok::<(), ggsci::Error>(())
+```
+
+Available canonical names are `default`, `fancy_light`, `fancy_dark`,
+`shades`, `tarnish`, `pastel`, `pimp`, `intense`, `fluo`, `red_roses`,
+`ochre_sand`, `yellow_lime`, `green_mint`, `ice_cube`, `blue_ocean`,
+`indigo_night`, and `purple_wine`. Lookup is case-insensitive and treats `_`,
+`-`, and whitespace as interchangeable separators.
+
+Use `generate_with_seed()` for reproducible output. It uses `ChaCha8Rng` with
+an explicitly defined SplitMix64 `u64`-to-32-byte seed expansion and a stable
+53-bit floating-point sampling rule. Golden tests lock this crate's seeded
+output, but seeds are not cross-language compatible with R or NumPy. Use
+`generate()` for fresh nondeterministic output from an independent RNG seeded
+from the operating system; it does not mutate an application RNG. The RGBA
+methods accept finite alpha in `(0.0, 1.0]` and apply it after RGB generation.
+
+Generation performs rejection sampling followed by filtered k-means and
+farthest-first ordering. Its cost grows with the requested color count; as in
+R, quality drops from 50 iterations at up to 50 colors to 25, 10, 5, and 2 at
+the 50/100/200/300 boundaries. The deterministic 9,261-point candidate grid is
+filtered once into a thread-safe indexed cache for all 17 generated filters;
+generated palettes themselves are never cached.
+
+Gephi has a dedicated generator registry because each result requires an
+algorithm and random state. Its definitions are not duplicated in the stored
+core `palettes()` or `palettes_by_kind()` registry even though both Gephi and
+stored categorical palettes have discrete scale semantics.
+
 iTerm themes use their own API because each theme has normal and bright
 variants plus the fixed terminal-channel order Blue, Yellow, Red, Cyan, Green,
 Magenta:
@@ -70,7 +114,7 @@ ggsql crates are private scaffolds for later integrations.
 
 ## Maintenance
 
-Core and iTerm palette data and R-generated continuous golden fixtures are
+Core, iTerm, and Gephi metadata plus R-generated continuous golden fixtures are
 checked in. To refresh all of them from the vendored upstream source during
 development:
 
@@ -78,10 +122,10 @@ development:
 cargo xtask update-palettes
 ```
 
-The command regenerates the core registry, continuous fixtures, and dedicated
-iTerm registry, then formats the workspace. It requires R. Building, testing,
-documenting, and using the published crate do not require R or the vendor
-sources.
+The command regenerates the core registry, continuous fixtures, dedicated
+iTerm registry, and Gephi filter registry, then formats the workspace. It
+requires R. Building, testing, documenting, and using the published crate do
+not require R, Python, NumPy, or the vendor sources.
 
 ## Related work
 

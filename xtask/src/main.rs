@@ -38,6 +38,7 @@ fn update_palettes() -> Result<(), Box<dyn Error>> {
     let output = root.join("crates/ggsci/src/generated/palettes.rs");
     let fixture_output = root.join("crates/ggsci/tests/generated/continuous_fixtures.rs");
     let iterm_output = root.join("crates/ggsci/src/generated/iterm.rs");
+    let gephi_output = root.join("crates/ggsci/src/generated/gephi.rs");
 
     run_command(
         Command::new("Rscript")
@@ -59,6 +60,13 @@ fn update_palettes() -> Result<(), Box<dyn Error>> {
             .arg("tools/generate-iterm-palettes.R")
             .arg(&source)
             .arg(&iterm_output),
+    )?;
+    run_command(
+        Command::new("Rscript")
+            .current_dir(&root)
+            .arg("tools/generate-gephi-palettes.R")
+            .arg(&source)
+            .arg(&gephi_output),
     )?;
     run_command(
         Command::new("cargo")

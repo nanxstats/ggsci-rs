@@ -1,6 +1,6 @@
 [package]
 name = "ggsci-ggsql"
-version = "0.6.0"
+version = "0.6.1"
 edition = "2021"
 rust-version = "1.86"
 license.workspace = true
@@ -12,8 +12,11 @@ keywords = ["ggsql", "sql", "colors", "palettes", "visualization"]
 categories = ["visualization"]
 include = ["Cargo.toml", "README.md", "src/**/*.rs", "examples/**/*.rs"]
 
+[package.metadata.docs.rs]
+cargo-args = ["--config=env.GGSQL_SKIP_GENERATE=\"1\""]
+
 [dependencies]
-ggsci = { version = "0.6.0", path = "../ggsci" }
+ggsci = { version = "0.6.1", path = "../ggsci" }
 ggsql = { version = "0.4.1", default-features = false }
 
 [lints]

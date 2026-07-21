@@ -1,6 +1,6 @@
 [package]
 name = "ggsci-ggsql"
-version = "0.6.1"
+version = "0.6.2"
 edition = "2021"
 rust-version = "1.86"
 license.workspace = true
@@ -16,7 +16,7 @@ include = ["Cargo.toml", "README.md", "src/**/*.rs", "examples/**/*.rs"]
 cargo-args = ["--config=env.GGSQL_SKIP_GENERATE=\"1\""]
 
 [dependencies]
-ggsci = { version = "0.6.1", path = "../ggsci" }
+ggsci = { version = "0.6.2", path = "../ggsci" }
 ggsql = { version = "0.4.1", default-features = false }
 
 [lints]

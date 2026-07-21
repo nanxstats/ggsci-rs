@@ -1,6 +1,6 @@
 [package]
 name = "ggsci-ratatui"
-version = "0.6.1"
+version = "0.6.2"
 edition = "2024"
 rust-version = "1.88.0"
 license.workspace = true
@@ -19,7 +19,7 @@ include = [
 ]
 
 [dependencies]
-ggsci = { version = "0.6.1", path = "../ggsci" }
+ggsci = { version = "0.6.2", path = "../ggsci" }
 ratatui-core = { version = "0.1.2", default-features = false }
 
 [dev-dependencies]

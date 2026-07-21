@@ -1,5 +1,9 @@
 # ggsci
 
+[![CI tests](https://github.com/nanxstats/ggsci-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/nanxstats/ggsci-rs/actions/workflows/ci.yml)
+[![docs.rs](https://img.shields.io/docsrs/ggsci)](https://docs.rs/ggsci)
+[![crates.io](https://img.shields.io/crates/v/ggsci.svg)](https://crates.io/crates/ggsci)
+
 Scientific and sci-fi color palettes from the R package
 [ggsci](https://github.com/nanxstats/ggsci), packaged as Rust data and native
 palette generation algorithms.
@@ -15,11 +19,15 @@ data is stored or generated is an orthogonal implementation detail.
 Use `take()` for discrete category colors:
 
 ```rust
-let palette = ggsci::palette("npg", "nrc")?;
-let colors = palette.take_hex(3)?;
+use ggsci::palette_by_spec;
 
-assert_eq!(colors, ["#E64B35", "#4DBBD5", "#00A087"]);
-# Ok::<(), ggsci::Error>(())
+fn main() -> Result<(), ggsci::Error> {
+    let palette = palette_by_spec("observable:observable10")?;
+    let colors = palette.take_hex(3)?;
+
+    assert_eq!(colors, ["#4269D0", "#EFB118", "#FF725C"]);
+    Ok(())
+}
 ```
 
 The `gsea`, `bs5`, `material`, and `tw3` families are continuous. Their
@@ -27,28 +35,25 @@ arbitrary-length output reproduces ggsci for R's
 `colorRamp(..., space = "Lab", interpolate = "spline")`, including its FMM
 cubic spline, gamut handling, rounding, and endpoint behavior.
 
-Use `interpolate()` for a continuous gradient, or `sample()` when accepting
-either kind:
+Use `interpolate()` for continuous gradient samples:
 
 ```rust
 use ggsci::{palette_by_spec, ContinuousOptions};
 
-let palette = palette_by_spec("material:blue-grey")?;
+fn main() -> Result<(), ggsci::Error> {
+    let palette = palette_by_spec("material:blue-grey")?;
+    let colors = palette.interpolate(256)?;
+    let reversed = palette.interpolate_with(
+        256,
+        ContinuousOptions::new().with_reverse(true),
+    )?;
 
-let colors = palette.interpolate(256)?;
-let sampled = palette.sample(256)?;
-let reversed = palette.interpolate_with(
-    256,
-    ContinuousOptions::new().with_reverse(true),
-)?;
-let translucent = palette.interpolate_rgba(256, 0.6)?;
-
-assert_eq!(colors, sampled);
-assert_eq!(colors.len(), 256);
-assert_eq!(reversed.len(), 256);
-assert_eq!(translucent.len(), 256);
-# Ok::<(), ggsci::Error>(())
+    assert_eq!(reversed, colors.into_iter().rev().collect::<Vec<_>>());
+    Ok(())
+}
 ```
+
+Use `sample()` for kind-aware dispatch when accepting either palette kind.
 
 `Palette::colors()` returns canonical source colors: category colors for a
 discrete palette and interpolation anchors for a continuous palette.
@@ -56,14 +61,7 @@ Its length therefore does not limit how many colors a continuous palette can
 produce. Reverse is applied after interpolation, matching R.
 The continuous RGBA methods accept finite alpha values in `(0.0, 1.0]`.
 
-Lookup is case-insensitive and accepts `_`, `-`, and spaces interchangeably:
-
-```rust
-let palette = ggsci::palette_by_spec("material:blue-grey")?;
-assert_eq!(palette.family(), "material");
-assert_eq!(palette.variant(), "blue-grey");
-# Ok::<(), ggsci::Error>(())
-```
+Lookup is case-insensitive and accepts `_`, `-`, and spaces interchangeably.
 
 ## iTerm palettes
 
@@ -73,11 +71,13 @@ registry:
 ```rust
 use ggsci::{iterm_palette, ItermVariant};
 
-let rose_pine = iterm_palette("Rose Pine")?;
-let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+fn main() -> Result<(), ggsci::Error> {
+    let rose_pine = iterm_palette("Rose Pine")?;
+    let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
 
-assert_eq!(colors.len(), 6);
-# Ok::<(), ggsci::Error>(())
+    assert_eq!(colors.len(), 6);
+    Ok(())
+}
 ```
 
 Use `iterm_palettes()` to traverse the registry,
@@ -109,13 +109,13 @@ category values.
 ```rust
 use ggsci::gephi_palette;
 
-let gephi = gephi_palette("fancy-light")?;
+fn main() -> Result<(), ggsci::Error> {
+    let gephi = gephi_palette("fancy-light")?;
+    let colors = gephi.generate_with_seed(20, 42)?;
 
-let colors = gephi.generate_with_seed(20, 42)?;
-
-assert_eq!(colors.len(), 20);
-
-# Ok::<(), ggsci::Error>(())
+    assert_eq!(colors.len(), 20);
+    Ok(())
+}
 ```
 
 Use `gephi_palettes()` to inspect the dedicated registry,

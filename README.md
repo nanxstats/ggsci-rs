@@ -1,5 +1,9 @@
 # ggsci-rs
 
+[![CI tests](https://github.com/nanxstats/ggsci-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/nanxstats/ggsci-rs/actions/workflows/ci.yml)
+[![docs.rs](https://img.shields.io/docsrs/ggsci)](https://docs.rs/ggsci)
+[![crates.io](https://img.shields.io/crates/v/ggsci.svg)](https://crates.io/crates/ggsci)
+
 Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
@@ -12,30 +16,39 @@ and all 17 Gephi generative discrete palettes.
 The core registry contains the stored discrete palettes and the continuous
 palettes represented by canonical interpolation anchors.
 
+Use `take()` for discrete category colors:
+
 ```rust
-let palette = ggsci::palette("npg", "nrc")?;
-let colors = palette.take_hex(3)?;
-# Ok::<(), ggsci::Error>(())
+use ggsci::palette_by_spec;
+
+fn main() -> Result<(), ggsci::Error> {
+    let palette = palette_by_spec("observable:observable10")?;
+    let colors = palette.take_hex(3)?;
+
+    assert_eq!(colors, ["#4269D0", "#EFB118", "#FF725C"]);
+    Ok(())
+}
 ```
 
-Use `take()` for discrete category colors, `interpolate()` for continuous
-gradient samples, or `sample()` for kind-aware dispatch:
+Use `interpolate()` for continuous gradient samples:
 
 ```rust
 use ggsci::{palette_by_spec, ContinuousOptions};
 
-let palette = palette_by_spec("material:blue-grey")?;
-let colors = palette.interpolate(256)?;
-let sampled = palette.sample(256)?;
-let reversed = palette.interpolate_with(
-    256,
-    ContinuousOptions::new().with_reverse(true),
-)?;
+fn main() -> Result<(), ggsci::Error> {
+    let palette = palette_by_spec("material:blue-grey")?;
+    let colors = palette.interpolate(256)?;
+    let reversed = palette.interpolate_with(
+        256,
+        ContinuousOptions::new().with_reverse(true),
+    )?;
 
-assert_eq!(colors, sampled);
-assert_eq!(reversed.len(), 256);
-# Ok::<(), ggsci::Error>(())
+    assert_eq!(reversed, colors.into_iter().rev().collect::<Vec<_>>());
+    Ok(())
+}
 ```
+
+Use `sample()` for kind-aware dispatch when accepting either palette kind.
 
 `PaletteKind::{Discrete, Continuous}` describes scale semantics. Whether data
 is stored or generated is an orthogonal implementation detail. Accordingly,
@@ -51,11 +64,13 @@ Magenta:
 ```rust
 use ggsci::{iterm_palette, ItermVariant};
 
-let rose_pine = iterm_palette("Rose Pine")?;
-let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
+fn main() -> Result<(), ggsci::Error> {
+    let rose_pine = iterm_palette("Rose Pine")?;
+    let colors = rose_pine.take_hex(ItermVariant::Normal, 6)?;
 
-assert_eq!(colors.len(), 6);
-# Ok::<(), ggsci::Error>(())
+    assert_eq!(colors.len(), 6);
+    Ok(())
+}
 ```
 
 Theme lookup is case-insensitive and treats `_`, `-`, and whitespace as
@@ -76,13 +91,13 @@ mechanism, not a third palette kind.
 ```rust
 use ggsci::gephi_palette;
 
-let gephi = gephi_palette("fancy-light")?;
+fn main() -> Result<(), ggsci::Error> {
+    let gephi = gephi_palette("fancy-light")?;
+    let colors = gephi.generate_with_seed(20, 42)?;
 
-let colors = gephi.generate_with_seed(20, 42)?;
-
-assert_eq!(colors.len(), 20);
-
-# Ok::<(), ggsci::Error>(())
+    assert_eq!(colors.len(), 20);
+    Ok(())
+}
 ```
 
 Available canonical names are `default`, `fancy_light`, `fancy_dark`,

@@ -30,3 +30,22 @@ jobs:
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test --workspace --all-targets
       - run: cargo doc -p ggsci --no-deps
+      - run: cargo doc -p ggsci-ratatui --no-deps
+
+  core_msrv:
+    name: Rust 1.85 - ggsci MSRV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust toolchain
+        run: rustup toolchain install 1.85.0 --profile minimal
+      - run: cargo +1.85.0 check -p ggsci --all-targets
+
+  ratatui_msrv:
+    name: Rust 1.88 - ggsci-ratatui MSRV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust toolchain
+        run: rustup toolchain install 1.88.0 --profile minimal
+      - run: cargo +1.88.0 check -p ggsci-ratatui --all-targets

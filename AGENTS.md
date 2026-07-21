@@ -28,6 +28,14 @@
   cache generated output by seed and size.
 - The published `ggsci` crate must not require R, Python, NumPy, matplotlib,
   jsonlite, or network access at build time.
+- `ggsci` has a Rust 1.85 MSRV, the first stable toolchain whose Cargo supports
+  the workspace's Rust 2024 manifests. This also supports floating-point
+  arithmetic in `const fn`. The publishable `ggsci-ratatui` adapter matches the
+  higher Rust 1.88 MSRV of its `ratatui-core` dependency.
+- `ggsci-ratatui` depends on the registry version of `ratatui-core`, not the
+  vendored path. Its APIs adapt core, fixed iTerm, and generative Gephi output;
+  they do not introduce another palette kind.
+- `ggsci-ggsql` remains unpublished.
 - Do not add feature flags for now. The crate remains a packaged deal.
 - Before publishing, run:
 
@@ -37,6 +45,13 @@
   cargo clippy --workspace --all-targets -- -D warnings
   cargo test --workspace --all-targets
   cargo doc -p ggsci --no-deps
+  cargo doc -p ggsci-ratatui --no-deps
   cargo package -p ggsci --list
+  cargo package -p ggsci-ratatui --list
   cargo publish -p ggsci --dry-run
+  cargo publish -p ggsci-ratatui --dry-run
   ```
+
+  The adapter dry-run can fail until the matching `ggsci` release has reached
+  the registry. Do not weaken its registry version requirement to bypass the
+  release order constraint.

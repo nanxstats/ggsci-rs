@@ -1,5 +1,28 @@
 # Changelog
 
+## ggsci-rs 0.5.0
+
+### New features
+
+- Publish `ggsci-ratatui` for the first time at version 0.5.0, using
+  `ratatui-core` directly for its public `Color` and `Style` API (#15).
+- Add palette kind aware core palette conversion, explicit reversed continuous
+  conversion, fixed discrete iTerm conversion, and seeded or unseeded
+  generative discrete Gephi conversion.
+- Add 24-bit truecolor and deterministic xterm ANSI-256 modes, a local
+  `ToRatatuiColor` extension trait, and foreground/background style helpers.
+- Add explicit source-over RGBA compositing against an opaque background so
+  alpha is resolved before terminal color conversion.
+
+### Maintenance
+
+- Set the `ggsci` MSRV to Rust 1.85, the first stable toolchain whose Cargo
+  supports the workspace's Rust 2024 manifests and which also supports the
+  core interpolation code's floating point `const fn`. Give `ggsci-ratatui`
+  the Rust 1.88 MSRV and Rust 2024 edition required by `ratatui-core` 0.1.2.
+- Add adapter documentation, a compiling swatch example, package metadata,
+  package content validation, and separate CI checks for both crate MSRVs.
+
 ## ggsci-rs 0.4.1
 
 ### Documentation

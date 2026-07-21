@@ -1,13 +1,20 @@
 [package]
 name = "ggsci-ratatui"
-version = "0.1.0"
-edition.workspace = true
-rust-version.workspace = true
+version = "0.5.0"
+edition = "2024"
+rust-version = "1.88.0"
 license.workspace = true
 repository.workspace = true
 homepage.workspace = true
-description = "Private scaffold for future ggsci ratatui conversions"
-publish = false
+description = "ggsci color palettes for ratatui applications"
+readme = "README.md"
+keywords = ["ratatui", "tui", "colors", "palettes", "terminal"]
+categories = ["command-line-interface"]
+include = ["Cargo.toml", "README.md", "src/**/*.rs", "examples/**/*.rs"]
+
+[dependencies]
+ggsci = { version = "0.5.0", path = "../ggsci" }
+ratatui-core = { version = "0.1.2", default-features = false }
 
 [lints]
 workspace = true

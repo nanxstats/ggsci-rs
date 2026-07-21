@@ -6,6 +6,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  GGSQL_SKIP_GENERATE: "1"
 
 jobs:
   build_and_test:
@@ -31,6 +32,7 @@ jobs:
       - run: cargo test --workspace --all-targets
       - run: cargo doc -p ggsci --no-deps
       - run: cargo doc -p ggsci-ratatui --no-deps
+      - run: cargo doc -p ggsci-ggsql --no-deps
 
   core_msrv:
     name: Rust 1.85 - ggsci MSRV
@@ -49,3 +51,12 @@ jobs:
       - name: Install Rust toolchain
         run: rustup toolchain install 1.88.0 --profile minimal
       - run: cargo +1.88.0 check -p ggsci-ratatui --all-targets
+
+  ggsql_msrv:
+    name: Rust 1.86 - ggsci-ggsql MSRV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust toolchain
+        run: rustup toolchain install 1.86.0 --profile minimal
+      - run: cargo +1.86.0 check -p ggsci-ggsql --all-targets

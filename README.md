@@ -7,11 +7,15 @@
 Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
-The `ggsci` 0.5.0 release provides a core registry of 33 discrete palette
-variants and 53 continuous variants, all 551 fixed discrete iTerm palettes,
-and all 17 Gephi generative discrete palettes. The publishable
-`ggsci-ratatui` 0.5.0 adapter converts that output to ratatui colors and
-styles in truecolor or ANSI-256 mode.
+The `ggsci` crate provides a core registry of 33 discrete palette variants
+and 53 continuous variants, all 551 fixed discrete iTerm palettes,
+and all 17 Gephi generative discrete palettes.
+
+The `ggsci-ratatui` crate converts that output to ratatui colors and styles
+in truecolor or ANSI-256 mode.
+
+The `ggsci-ggsql` crate converts palettes to typed ggsql output ranges or
+explicit-array SQL scale clauses.
 
 ## Core palettes
 
@@ -130,18 +134,20 @@ stored categorical palettes have discrete scale semantics.
 
 ## Workspace
 
-The workspace has two publishable crates:
+The workspace has three publishable crates, all released at the same version:
 
 - `ggsci` contains palette data, interpolation, and generation.
 - `ggsci-ratatui` depends on `ratatui-core` and provides color conversion,
   alpha compositing, palette adapters, and foreground/background style helpers.
-
-`ggsci-ggsql` remains a private scaffold.
+- `ggsci-ggsql` depends on ggsql without its default features and provides
+  typed `OutputRange` conversion plus validated textual scale clauses.
 
 The `ggsci` crate requires Rust 1.85, the first stable release whose Cargo can
-load the workspace's Rust 2024 manifests. `ggsci-ratatui` requires Rust 1.88 to
-match `ratatui-core` 0.1.2. CI checks each public crate at its own MSRV in
-addition to checking the workspace on stable, beta, and nightly.
+load the workspace's Rust 2024 manifests.
+`ggsci-ratatui` requires Rust 1.88 to match `ratatui-core` 0.1.2.
+`ggsci-ggsql` requires Rust 1.86 to match ggsql 0.4.1.
+CI checks each public crate at its own MSRV in addition to checking the
+workspace on stable, beta, and nightly.
 
 For example:
 
@@ -160,6 +166,14 @@ fn main() -> Result<(), ggsci::Error> {
 
 See the [ggsci-ratatui README](crates/ggsci-ratatui/README.md) for ANSI-256,
 continuous, iTerm, Gephi, and RGBA conversion details.
+
+ggsql does not currently expose a third-party palette registry, so
+`ggsci-ggsql` emits explicit color arrays instead of globally registering
+ggsci names. It preserves source `PaletteKind` separately from its ggsql
+`ScaleKind`, supports typed `OutputRange::Array` conversion, and provides
+discrete, continuous, fixed iTerm, and seeded Gephi SQL helpers. See the
+[ggsci-ggsql README](crates/ggsci-ggsql/README.md) for examples and the ggsql
+parser build note.
 
 ## Maintenance
 

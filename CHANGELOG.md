@@ -1,5 +1,40 @@
 # Changelog
 
+## ggsci-rs 0.6.0
+
+This release synchronizes `ggsci`, `ggsci-ratatui`, and `ggsci-ggsql` at
+version 0.6.0 (#17).
+
+### New features
+
+- Publish `ggsci-ggsql` for the first time, targeting ggsql 0.4.1 without its
+  default database reader, output, spatial, or built-in data features.
+- Add the kind-preserving `GgsqlPalette` wrapper with core discrete and
+  continuous resolution, explicit reverse options, fixed discrete iTerm
+  conversion, and seeded or unseeded generative discrete Gephi conversion.
+- Add typed `ggsql::plot::scale::OutputRange::Array` conversion and textual
+  explicit-array `SCALE` generation. Preserve the discrete-only
+  `color_array()` and `scale_discrete()` scaffold APIs.
+- Add adapter-level `ScaleKind::{Discrete, Continuous, Binned, Ordinal}` with
+  default mapping from `ggsci::PaletteKind` and support for explicit valid
+  combinations such as continuous palette samples on binned scales.
+- Add trimmed ASCII aesthetic validation and convenience functions for typed
+  output, continuous scales, fixed iTerm themes, and reproducible Gephi output.
+
+### Testing, documentation, and maintenance
+
+- Add ggsql parser integration tests for generated discrete and 256-color
+  continuous clauses, typed-array conversion tests, all four scale keywords,
+  invalid SQL identifiers, reversed gradients, iTerm themes, and deterministic
+  Gephi generation.
+- Add discrete and continuous examples plus crates.io documentation explaining
+  the current explicit-array integration. ggsql has no stable third-party
+  provider or registry API; the adapter can adopt a future official trait when
+  one becomes available.
+- Keep `ggsci` at Rust 1.85 and `ggsci-ratatui` at Rust 1.88. Give `ggsci-ggsql`
+  the Rust 1.86 MSRV and Rust 2021 edition inherited by ggsql 0.4.1,
+  with a separate CI package check.
+
 ## ggsci-rs 0.5.0
 
 ### New features

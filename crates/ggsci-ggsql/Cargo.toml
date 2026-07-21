@@ -1,16 +1,20 @@
 [package]
 name = "ggsci-ggsql"
-version = "0.1.0"
-edition.workspace = true
-rust-version.workspace = true
+version = "0.6.0"
+edition = "2021"
+rust-version = "1.86"
 license.workspace = true
 repository.workspace = true
 homepage.workspace = true
-description = "Private scaffold for future ggsci ggsql integration"
-publish = false
+description = "Use ggsci color palettes in ggsql visualizations"
+readme = "README.md"
+keywords = ["ggsql", "sql", "colors", "palettes", "visualization"]
+categories = ["visualization"]
+include = ["Cargo.toml", "README.md", "src/**/*.rs", "examples/**/*.rs"]
 
 [dependencies]
-ggsci = { version = "0.5.0", path = "../ggsci" }
+ggsci = { version = "0.6.0", path = "../ggsci" }
+ggsql = { version = "0.4.1", default-features = false }
 
 [lints]
 workspace = true

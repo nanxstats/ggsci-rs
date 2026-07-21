@@ -7,9 +7,11 @@
 Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
-The `ggsci` 0.4.0 release provides a core registry of 33 discrete palette
+The `ggsci` 0.5.0 release provides a core registry of 33 discrete palette
 variants and 53 continuous variants, all 551 fixed discrete iTerm palettes,
-and all 17 Gephi generative discrete palettes.
+and all 17 Gephi generative discrete palettes. The publishable
+`ggsci-ratatui` 0.5.0 adapter converts that output to ratatui colors and
+styles in truecolor or ANSI-256 mode.
 
 ## Core palettes
 
@@ -128,8 +130,36 @@ stored categorical palettes have discrete scale semantics.
 
 ## Workspace
 
-`crates/ggsci` is the only publishable crate in the workspace.
-The ratatui and ggsql crates are private scaffolds for later integrations.
+The workspace has two publishable crates:
+
+- `ggsci` contains palette data, interpolation, and generation.
+- `ggsci-ratatui` depends on `ratatui-core` and provides color conversion,
+  alpha compositing, palette adapters, and foreground/background style helpers.
+
+`ggsci-ggsql` remains a private scaffold.
+
+The `ggsci` crate requires Rust 1.85, the first stable release whose Cargo can
+load the workspace's Rust 2024 manifests. `ggsci-ratatui` requires Rust 1.88 to
+match `ratatui-core` 0.1.2. CI checks each public crate at its own MSRV in
+addition to checking the workspace on stable, beta, and nightly.
+
+For example:
+
+```rust
+use ggsci_ratatui::{colors, foreground_styles, ColorMode};
+
+fn main() -> Result<(), ggsci::Error> {
+    let colors = colors("observable:observable10", 5, ColorMode::TrueColor)?;
+    let styles = foreground_styles(&colors);
+
+    assert_eq!(colors.len(), 5);
+    assert_eq!(styles.len(), 5);
+    Ok(())
+}
+```
+
+See the [ggsci-ratatui README](crates/ggsci-ratatui/README.md) for ANSI-256,
+continuous, iTerm, Gephi, and RGBA conversion details.
 
 ## Maintenance
 

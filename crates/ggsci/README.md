@@ -150,6 +150,10 @@ kind.
 
 ## Packaging and maintenance
 
+The minimum supported Rust version is 1.85. This is the first stable release
+whose Cargo supports the workspace's Rust 2024 manifests, and it supports the
+floating-point `const fn` used by continuous interpolation.
+
 The complete core, iTerm, and Gephi metadata is included without feature flags.
 The crate has no build script. Generated Rust data and R-generated exact-channel
 fixtures are checked in and run as ordinary Rust integration tests.
@@ -158,3 +162,11 @@ R is only a maintainer dependency; builds do not require R, Python, NumPy,
 matplotlib, jsonlite, vendor sources, or network access. The single
 `cargo xtask update-palettes` command regenerates the core registry, continuous
 fixtures, iTerm registry, and Gephi filter registry, then formats the workspace.
+
+## Ratatui adapter
+
+The separately published [`ggsci-ratatui`](https://crates.io/crates/ggsci-ratatui)
+crate converts core, iTerm, and Gephi output to `ratatui_core::style::Color`.
+It provides truecolor and deterministic ANSI-256 modes, explicit RGBA compositing,
+and foreground or background `Style` helpers without depending on the full
+ratatui application crate.

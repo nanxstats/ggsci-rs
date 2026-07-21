@@ -311,7 +311,7 @@ impl<'a> FmmSpline<'a> {
                 interval = 0;
                 let mut upper = self.x.len();
                 while upper > interval + 1 {
-                    let middle = (interval + upper) / 2;
+                    let middle = interval.midpoint(upper);
                     if value < self.x[middle] {
                         upper = middle;
                     } else {

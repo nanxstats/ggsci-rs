@@ -1,5 +1,17 @@
 # Changelog
 
+## ggsci-rs 0.6.1
+
+This release synchronizes `ggsci`, `ggsci-ratatui`, and `ggsci-ggsql` at
+version 0.6.1 (#19).
+
+### Documentation
+
+- Fix `ggsci-ggsql` documentation builds on docs.rs by configuring Cargo to
+  set `GGSQL_SKIP_GENERATE=1`. This makes `tree-sitter-ggsql` compile its
+  packaged generated parser instead of requiring an unavailable
+  `tree-sitter-cli` executable.
+
 ## ggsci-rs 0.6.0
 
 This release synchronizes `ggsci`, `ggsci-ratatui`, and `ggsci-ggsql` at

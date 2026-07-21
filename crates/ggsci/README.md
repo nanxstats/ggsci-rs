@@ -163,10 +163,17 @@ matplotlib, jsonlite, vendor sources, or network access. The single
 `cargo xtask update-palettes` command regenerates the core registry, continuous
 fixtures, iTerm registry, and Gephi filter registry, then formats the workspace.
 
-## Ratatui adapter
+## Adapters
 
 The separately published [`ggsci-ratatui`](https://crates.io/crates/ggsci-ratatui)
 crate converts core, iTerm, and Gephi output to `ratatui_core::style::Color`.
 It provides truecolor and deterministic ANSI-256 modes, explicit RGBA compositing,
 and foreground or background `Style` helpers without depending on the full
 ratatui application crate.
+
+The separately published [`ggsci-ggsql`](https://crates.io/crates/ggsci-ggsql)
+crate converts palettes to ggsql 0.4.1 explicit color arrays. It supports typed
+`OutputRange` conversion and textual `SCALE` clauses for core, iTerm, and
+Gephi palettes without enabling ggsql's database reader or output features.
+ggsql does not yet expose a third-party palette registry, so the adapter does
+not register named ggsci palettes globally.

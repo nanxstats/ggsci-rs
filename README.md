@@ -175,6 +175,18 @@ discrete, continuous, fixed iTerm, and seeded Gephi SQL helpers. See the
 [ggsci-ggsql README](crates/ggsci-ggsql/README.md) for examples and the ggsql
 parser build note.
 
+## Interactive palette gallery
+
+Run the complete interactive Ratatui gallery from the workspace root:
+
+```bash
+cargo run -p ggsci-ratatui --example palette-gallery
+```
+
+The responsive gallery browses every core, iTerm, and Gephi definition in
+TrueColor or ANSI-256 mode. It shows a realistic terminal application with tabs,
+palette cards, scrolling, resize handling, and keyboard controls.
+
 ## Maintenance
 
 Core, iTerm, and Gephi metadata plus R-generated continuous golden fixtures are

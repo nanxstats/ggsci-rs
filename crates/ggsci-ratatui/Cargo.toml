@@ -1,6 +1,6 @@
 [package]
 name = "ggsci-ratatui"
-version = "0.6.1"
+version = "0.6.2"
 edition = "2024"
 rust-version = "1.88.0"
 license.workspace = true
@@ -10,11 +10,30 @@ description = "ggsci color palettes for ratatui applications"
 readme = "README.md"
 keywords = ["ratatui", "tui", "colors", "palettes", "terminal"]
 categories = ["command-line-interface"]
-include = ["Cargo.toml", "README.md", "src/**/*.rs", "examples/**/*.rs"]
+include = [
+  "Cargo.toml",
+  "README.md",
+  "src/**/*.rs",
+  "examples/**/*.rs",
+  "examples/**/*.md",
+]
 
 [dependencies]
-ggsci = { version = "0.6.1", path = "../ggsci" }
+ggsci = { version = "0.6.2", path = "../ggsci" }
 ratatui-core = { version = "0.1.2", default-features = false }
+
+[dev-dependencies]
+crossterm = "0.29.0"
+ratatui = { version = "0.30.2", default-features = false, features = [
+  "crossterm_0_29",
+  "layout-cache",
+] }
+
+[[example]]
+name = "palette-gallery"
+path = "examples/palette-gallery/main.rs"
+test = true
+bench = false
 
 [lints]
 workspace = true

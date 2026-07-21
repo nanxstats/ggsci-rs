@@ -10,7 +10,7 @@ default-members = ["crates/ggsci"]
 
 [workspace.package]
 edition = "2021"
-rust-version = "1.74"
+rust-version = "1.85"
 license = "MIT"
 repository = "https://github.com/nanxstats/ggsci-rs"
 homepage = "https://github.com/nanxstats/ggsci-rs"

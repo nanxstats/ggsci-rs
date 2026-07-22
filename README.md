@@ -187,6 +187,8 @@ The responsive gallery browses every core, iTerm, and Gephi definition in
 TrueColor or ANSI-256 mode. It shows a realistic terminal application with tabs,
 palette cards, scrolling, resize handling, and keyboard controls.
 
+![Interactive palette gallery cycling through the discrete, continuous, iTerm, and Gephi tabs](https://github.com/user-attachments/assets/ffb4aba1-f46c-4b70-86c8-2ed617204a76)
+
 ## Maintenance
 
 Core, iTerm, and Gephi metadata plus R-generated continuous golden fixtures are

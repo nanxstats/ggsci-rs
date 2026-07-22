@@ -112,6 +112,8 @@ complete Ratatui application with tabs, deterministic seeded Gephi cards,
 resize-safe grid navigation, and keyboard help. See the
 [example README](examples/palette-gallery/README.md) for all controls.
 
+![Interactive palette gallery cycling through the discrete, continuous, iTerm, and Gephi tabs](https://github.com/user-attachments/assets/ffb4aba1-f46c-4b70-86c8-2ed617204a76)
+
 ## Alpha compositing
 
 Ratatui colors do not have an alpha channel. `rgba_over()` therefore performs

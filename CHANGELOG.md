@@ -5,7 +5,7 @@
 ### Documentation and examples
 
 - Add a demo recording using `vhs` for the interactive Ratatui palette gallery
-  that cycles through all tabs and scrolls their card grids (#23).
+  that cycles through all tabs and scrolls their card grids (#23, #24).
 
 ## ggsci-rs 0.6.2
 

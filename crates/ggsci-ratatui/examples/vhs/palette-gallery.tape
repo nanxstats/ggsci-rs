@@ -7,7 +7,7 @@ Require cargo
 
 Set Shell "bash"
 Set Theme "Raycast_Dark"
-Set FontFamily "Liga Paper Mono"
+Set FontFamily "Berkeley Mono Variable"
 Set FontSize 14
 Set Width 1280
 Set Height 720
@@ -23,29 +23,28 @@ Enter
 Wait+Screen /ggsci-rs palette gallery/
 Show
 
-Sleep 800ms
-Down@125ms 6
-Sleep 300ms
+Sleep 2s
+Down@250ms 3
+Sleep 2s
 
 Right
-Sleep 400ms
-Down@100ms 6
-Sleep 300ms
+Sleep 2s
+Down@250ms 8
+Sleep 2s
 
 Right
-Sleep 400ms
-Down@75ms 10
+Sleep 2s
+Down@200ms 14
+Sleep 2s
+
+Right
+Sleep 2s
+Down@250ms 1
+Sleep 2s
+
+Right
 Type "g"
-Sleep 300ms
-
-Right
-Sleep 400ms
-Down@125ms 1
-Sleep 300ms
-
-Right
-Type "g"
-Sleep 400ms
+Sleep 2s
 
 Hide
 Type "q"

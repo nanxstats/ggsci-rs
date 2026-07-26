@@ -204,7 +204,9 @@ iTerm registry, and Gephi filter registry, then formats the workspace. It
 requires R. Building, testing, documenting, and using the published crate do
 not require R, Python, NumPy, or the vendor sources.
 
-## Related work
+## Related projects
 
-- [ggsci for R](https://github.com/nanxstats/ggsci)
-- [ggsci for Python](https://github.com/nanxstats/py-ggsci)
+ggsci is also available in other programming languages:
+
+- [ggsci](https://github.com/nanxstats/ggsci) - ggsci color palettes for ggplot2 in R.
+- [py-ggsci](https://github.com/nanxstats/py-ggsci) - ggsci color palettes for plotnine in Python.

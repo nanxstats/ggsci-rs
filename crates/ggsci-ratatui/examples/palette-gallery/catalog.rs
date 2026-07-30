@@ -200,7 +200,7 @@ mod tests {
     fn catalog_has_every_registry_entry_with_expected_strip_shapes() {
         let catalog = Catalog::new().unwrap();
 
-        assert_eq!(catalog.counts(), [33, 53, 551, 17]);
+        assert_eq!(catalog.counts(), [33, 53, 601, 17]);
         assert!(catalog.discrete.iter().all(|entry| {
             entry.strips.len() == 1 && !entry.strips[0].colors(ColorMode::TrueColor).is_empty()
         }));

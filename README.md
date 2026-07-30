@@ -7,9 +7,9 @@
 Rust workspace for scientific and sci-fi color palettes from
 [ggsci](https://github.com/nanxstats/ggsci).
 
-The `ggsci` crate provides a core registry of 33 discrete palette variants
-and 53 continuous variants, all 551 fixed discrete iTerm palettes,
-and all 17 Gephi generative discrete palettes.
+The `ggsci` crate provides a core registry of the discrete palettes,
+continuous palettes, fixed discrete iTerm palettes, and Gephi generative
+discrete palettes.
 
 The `ggsci-ratatui` crate converts that output to ratatui colors and styles
 in truecolor or ANSI-256 mode.

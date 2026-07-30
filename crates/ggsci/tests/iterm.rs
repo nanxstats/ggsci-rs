@@ -20,9 +20,9 @@ const DRACULA_BRIGHT: [&str; 6] = [
 
 #[test]
 fn generated_iterm_registry_has_expected_counts_and_shape() {
-    assert_eq!(iterm_palette_count(), 551);
-    assert_eq!(iterm_palettes().len(), 551);
-    assert_eq!(iterm_total_color_count(), 6_612);
+    assert_eq!(iterm_palette_count(), 601);
+    assert_eq!(iterm_palettes().len(), 601);
+    assert_eq!(iterm_total_color_count(), 7_212);
 
     for palette in iterm_palettes() {
         assert_eq!(palette.kind(), PaletteKind::Discrete);

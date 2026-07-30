@@ -8,11 +8,11 @@ definition shipped by `ggsci` through the public `ggsci` registries and
 cargo run -p ggsci-ratatui --example palette-gallery
 ```
 
-The responsive card grid has four tabs: 33 core discrete palettes, 53 core
-continuous palettes, 551 iTerm themes, and 17 Gephi generative palettes. iTerm
-cards show all six normal and all six bright colors together. Continuous cards
-show 32 interpolated samples, and Gephi cards use 12 deterministic colors from
-the fixed seed `42`.
+The responsive card grid has four tabs: core discrete palettes,
+core continuous palettes, iTerm palettes, and Gephi generative palettes.
+iTerm cards show all six normal and all six bright colors together.
+Continuous cards show 32 interpolated samples, and Gephi cards use
+12 deterministic colors from the fixed seed `42`.
 
 Press `m` to switch between 24-bit TrueColor and xterm ANSI-256 output.
 TrueColor fidelity depends on support from the terminal and its backend.

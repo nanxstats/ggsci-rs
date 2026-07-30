@@ -8,8 +8,8 @@ Scientific and sci-fi color palettes from the R package
 [ggsci](https://github.com/nanxstats/ggsci), packaged as Rust data and native
 palette generation algorithms.
 
-This crate includes all 86 core palettes, all 551 iTerm themes, and all 17
-Gephi generators from upstream. `PaletteKind::Discrete` maps categories to
+This crate includes all core palettes, iTerm palettes, and Gephi palette
+generators from upstream. `PaletteKind::Discrete` maps categories to
 individual colors, while `PaletteKind::Continuous` maps a continuous domain
 through an interpolated gradient. These are scale semantics: whether palette
 data is stored or generated is an orthogonal implementation detail.

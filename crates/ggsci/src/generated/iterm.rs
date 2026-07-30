@@ -5,10 +5,10 @@
 
 use crate::{ItermPalette, Rgb};
 
-pub(crate) const ITERM_PALETTE_COUNT: usize = 551;
+pub(crate) const ITERM_PALETTE_COUNT: usize = 601;
 pub(crate) const ITERM_VARIANT_COUNT: usize = 2;
 pub(crate) const ITERM_COLORS_PER_VARIANT: usize = 6;
-pub(crate) const ITERM_TOTAL_COLOR_COUNT: usize = 6612;
+pub(crate) const ITERM_TOTAL_COLOR_COUNT: usize = 7212;
 pub(crate) const ITERM_DATA_SOURCE: &str = "ggsci/R/palettes-iterm.R";
 
 const ITERM_0X96F_NORMAL: &[Rgb; 6] = &[
@@ -128,6 +128,23 @@ const ITERM_ABERNATHY_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x00FFFF),
     Rgb::from_hex(0x00FF00),
     Rgb::from_hex(0xFF00FF),
+];
+
+const ITERM_ACID_U0020_LIME_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x4DECA0),
+    Rgb::from_hex(0xEEFF5C),
+    Rgb::from_hex(0xFF3344),
+    Rgb::from_hex(0x50FFB4),
+    Rgb::from_hex(0x97E63C),
+    Rgb::from_hex(0xA6FF6B),
+];
+const ITERM_ACID_U0020_LIME_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x4DECA0),
+    Rgb::from_hex(0xDBFF45),
+    Rgb::from_hex(0xFF3344),
+    Rgb::from_hex(0x50FFB4),
+    Rgb::from_hex(0x97E63C),
+    Rgb::from_hex(0xA6FF6B),
 ];
 
 const ITERM_ADVENTURE_U0020_TIME_NORMAL: &[Rgb; 6] = &[
@@ -281,6 +298,23 @@ const ITERM_ALIEN_U0020_BLOOD_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x00E0C4),
     Rgb::from_hex(0x18E000),
     Rgb::from_hex(0x0058E0),
+];
+
+const ITERM_AMBER_U0020_CRT_U0020_RETRO_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xFF8C00),
+    Rgb::from_hex(0xFFC742),
+    Rgb::from_hex(0xFF6A00),
+    Rgb::from_hex(0xFFD27F),
+    Rgb::from_hex(0xFFB000),
+    Rgb::from_hex(0xFFA033),
+];
+const ITERM_AMBER_U0020_CRT_U0020_RETRO_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xFFAB3D),
+    Rgb::from_hex(0xFFE08A),
+    Rgb::from_hex(0xFF8A1E),
+    Rgb::from_hex(0xFFE3B0),
+    Rgb::from_hex(0xFFC742),
+    Rgb::from_hex(0xFFC266),
 ];
 
 const ITERM_ANDROMEDA_NORMAL: &[Rgb; 6] = &[
@@ -502,6 +536,23 @@ const ITERM_ATOM_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x85BEFD),
     Rgb::from_hex(0x94FA36),
     Rgb::from_hex(0xB9B6FC),
+];
+
+const ITERM_AUBADE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x4A3CC0),
+    Rgb::from_hex(0x8C610C),
+    Rgb::from_hex(0xC0303A),
+    Rgb::from_hex(0xAE3F84),
+    Rgb::from_hex(0x2E7D6E),
+    Rgb::from_hex(0x8A4BC0),
+];
+const ITERM_AUBADE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x4A3CC0),
+    Rgb::from_hex(0xAE3F84),
+    Rgb::from_hex(0xC0303A),
+    Rgb::from_hex(0xAE3F84),
+    Rgb::from_hex(0x2E7D6E),
+    Rgb::from_hex(0xD8B670),
 ];
 
 const ITERM_AURA_U0020_DARK_NORMAL: &[Rgb; 6] = &[
@@ -1269,6 +1320,23 @@ const ITERM_CARBONFOX_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xC8A5FF),
 ];
 
+const ITERM_CASSETTE_U0020_TAPE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x7C2D12),
+    Rgb::from_hex(0xBE123C),
+    Rgb::from_hex(0xB91C1C),
+    Rgb::from_hex(0xB45309),
+    Rgb::from_hex(0x3F6212),
+    Rgb::from_hex(0x0F766E),
+];
+const ITERM_CASSETTE_U0020_TAPE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x63240E),
+    Rgb::from_hex(0x9C0F31),
+    Rgb::from_hex(0x941616),
+    Rgb::from_hex(0x904207),
+    Rgb::from_hex(0x324E0E),
+    Rgb::from_hex(0x0C5E58),
+];
+
 const ITERM_CATPPUCCIN_U0020_FRAPPE_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x8CAAEE),
     Rgb::from_hex(0xE5C890),
@@ -1437,6 +1505,23 @@ const ITERM_CIAPRE_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xF3DBB2),
     Rgb::from_hex(0xA6A75D),
     Rgb::from_hex(0xD33061),
+];
+
+const ITERM_CITRUS_U0020_INK_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xC2EF45),
+    Rgb::from_hex(0xE6C84A),
+    Rgb::from_hex(0xFF6B5B),
+    Rgb::from_hex(0xCFE89A),
+    Rgb::from_hex(0x5FD3A0),
+    Rgb::from_hex(0xF2B441),
+];
+const ITERM_CITRUS_U0020_INK_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xB8E62E),
+    Rgb::from_hex(0xF2A23E),
+    Rgb::from_hex(0xFF8174),
+    Rgb::from_hex(0xD5EBA6),
+    Rgb::from_hex(0x72D8AB),
+    Rgb::from_hex(0xB8E62E),
 ];
 
 const ITERM_CITRUSZEST_NORMAL: &[Rgb; 6] = &[
@@ -1694,6 +1779,23 @@ const ITERM_CRAYON_U0020_PONY_U0020_FISH_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xFC6CBA),
 ];
 
+const ITERM_CRT_U0020_AMBER_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xC084FC),
+    Rgb::from_hex(0xFDE68A),
+    Rgb::from_hex(0xEF4444),
+    Rgb::from_hex(0xF59E0B),
+    Rgb::from_hex(0x84CC16),
+    Rgb::from_hex(0xF97316),
+];
+const ITERM_CRT_U0020_AMBER_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xCD9DFD),
+    Rgb::from_hex(0xFDEB9F),
+    Rgb::from_hex(0xF26969),
+    Rgb::from_hex(0xF7B13C),
+    Rgb::from_hex(0x9DD645),
+    Rgb::from_hex(0xFA8F45),
+];
+
 const ITERM_CURSOR_U0020_DARK_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x81A1C1),
     Rgb::from_hex(0xD2943E),
@@ -1932,6 +2034,40 @@ const ITERM_DARKSIDE_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x957BBE),
 ];
 
+const ITERM_DATUM_U0020__U0028_DARK_U0029__NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x69B9F7),
+    Rgb::from_hex(0xE8DF69),
+    Rgb::from_hex(0xFE9864),
+    Rgb::from_hex(0x6AE5EC),
+    Rgb::from_hex(0x54DCAA),
+    Rgb::from_hex(0xFA94CD),
+];
+const ITERM_DATUM_U0020__U0028_DARK_U0029__BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xB2DAFB),
+    Rgb::from_hex(0xFCDCAD),
+    Rgb::from_hex(0xF8BD5F),
+    Rgb::from_hex(0xA5F5F9),
+    Rgb::from_hex(0x54DCAA),
+    Rgb::from_hex(0xF5B9D9),
+];
+
+const ITERM_DATUM_U0020__U0028_LIGHT_U0029__NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0176B8),
+    Rgb::from_hex(0x656023),
+    Rgb::from_hex(0xA24500),
+    Rgb::from_hex(0x0D7A7F),
+    Rgb::from_hex(0x007553),
+    Rgb::from_hex(0x973070),
+];
+const ITERM_DATUM_U0020__U0028_LIGHT_U0029__BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2F516C),
+    Rgb::from_hex(0x4D3919),
+    Rgb::from_hex(0x976700),
+    Rgb::from_hex(0x154B4E),
+    Rgb::from_hex(0x007553),
+    Rgb::from_hex(0x633750),
+];
+
 const ITERM_DAWNFOX_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x286983),
     Rgb::from_hex(0xEA9D34),
@@ -1947,6 +2083,23 @@ const ITERM_DAWNFOX_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x5CA7B4),
     Rgb::from_hex(0x629F81),
     Rgb::from_hex(0x9A80B9),
+];
+
+const ITERM_DAYBREAK_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x186875),
+    Rgb::from_hex(0x795900),
+    Rgb::from_hex(0xAF2817),
+    Rgb::from_hex(0x006A62),
+    Rgb::from_hex(0x3C6A12),
+    Rgb::from_hex(0x754193),
+];
+const ITERM_DAYBREAK_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x207887),
+    Rgb::from_hex(0x9A4C1F),
+    Rgb::from_hex(0xC03A27),
+    Rgb::from_hex(0x087A71),
+    Rgb::from_hex(0x538625),
+    Rgb::from_hex(0x8552A3),
 ];
 
 const ITERM_DAYFOX_NORMAL: &[Rgb; 6] = &[
@@ -2204,6 +2357,23 @@ const ITERM_DRACULA_U002B__BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xFF92DF),
 ];
 
+const ITERM_DRIFTWOOD_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x78B3B5),
+    Rgb::from_hex(0xE1B869),
+    Rgb::from_hex(0xE77467),
+    Rgb::from_hex(0xA5C4B1),
+    Rgb::from_hex(0xAAB971),
+    Rgb::from_hex(0xC9A0BD),
+];
+const ITERM_DRIFTWOOD_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x92C6C7),
+    Rgb::from_hex(0xE39962),
+    Rgb::from_hex(0xF38F7E),
+    Rgb::from_hex(0xBBD6C3),
+    Rgb::from_hex(0xBECC8A),
+    Rgb::from_hex(0xDAB6D1),
+];
+
 const ITERM_DUCKBONES_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x00A3CB),
     Rgb::from_hex(0xE39500),
@@ -2270,6 +2440,23 @@ const ITERM_EARTHSONG_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x84F088),
     Rgb::from_hex(0x98E036),
     Rgb::from_hex(0xFF9269),
+];
+
+const ITERM_ECLIPSE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x5FB9FF),
+    Rgb::from_hex(0xF1C655),
+    Rgb::from_hex(0xFF6366),
+    Rgb::from_hex(0x3ADDC4),
+    Rgb::from_hex(0x85DF5E),
+    Rgb::from_hex(0xCEA5FF),
+];
+const ITERM_ECLIPSE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x84CCFF),
+    Rgb::from_hex(0xFAD77C),
+    Rgb::from_hex(0xFF8688),
+    Rgb::from_hex(0x68EAD3),
+    Rgb::from_hex(0xA0EC7E),
+    Rgb::from_hex(0xDDBFFF),
 ];
 
 const ITERM_ELECTRON_U0020_HIGHLIGHTER_U0020_DAY_NORMAL: &[Rgb; 6] = &[
@@ -2833,6 +3020,23 @@ const ITERM_FOREST_U0020_BLUE_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x7E62B3),
 ];
 
+const ITERM_FORGE_U0020_EMBER_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xF0A24F),
+    Rgb::from_hex(0xFFB347),
+    Rgb::from_hex(0xFF4733),
+    Rgb::from_hex(0xFFD27A),
+    Rgb::from_hex(0xC4C24A),
+    Rgb::from_hex(0xFF6A4D),
+];
+const ITERM_FORGE_U0020_EMBER_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xF0A24F),
+    Rgb::from_hex(0xFF7A2D),
+    Rgb::from_hex(0xFF4733),
+    Rgb::from_hex(0xFFD27A),
+    Rgb::from_hex(0xC4C24A),
+    Rgb::from_hex(0xFF6A4D),
+];
+
 const ITERM_FRAMER_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x00AAFF),
     Rgb::from_hex(0xFFCC33),
@@ -2865,6 +3069,23 @@ const ITERM_FRONT_U0020_END_U0020_DELIGHT_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x4FBCE6),
     Rgb::from_hex(0x74EC4C),
     Rgb::from_hex(0xE75E4F),
+];
+
+const ITERM_FROSTBYTE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x1A66BE),
+    Rgb::from_hex(0x876010),
+    Rgb::from_hex(0xC2384F),
+    Rgb::from_hex(0x1A7E9E),
+    Rgb::from_hex(0x2E7A56),
+    Rgb::from_hex(0x5552CC),
+];
+const ITERM_FROSTBYTE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x1A66BE),
+    Rgb::from_hex(0x9A5220),
+    Rgb::from_hex(0xC2384F),
+    Rgb::from_hex(0x1A7E9E),
+    Rgb::from_hex(0x2E7A56),
+    Rgb::from_hex(0x5552CC),
 ];
 
 const ITERM_FUN_U0020_FORREST_NORMAL: &[Rgb; 6] = &[
@@ -3207,6 +3428,23 @@ const ITERM_GRAPE_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xAD81C2),
 ];
 
+const ITERM_GRAPHITE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x8DB4D0),
+    Rgb::from_hex(0xCEC59D),
+    Rgb::from_hex(0xE58888),
+    Rgb::from_hex(0xA8C6D4),
+    Rgb::from_hex(0xA7C59F),
+    Rgb::from_hex(0xBAABCB),
+];
+const ITERM_GRAPHITE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xA5C6DE),
+    Rgb::from_hex(0xCFBA97),
+    Rgb::from_hex(0xF19F9F),
+    Rgb::from_hex(0xBCD6E2),
+    Rgb::from_hex(0xB9D5B1),
+    Rgb::from_hex(0xCCBEDD),
+];
+
 const ITERM_GRASS_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x0000A3),
     Rgb::from_hex(0xE7B000),
@@ -3222,6 +3460,23 @@ const ITERM_GRASS_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x55FFFF),
     Rgb::from_hex(0x00BB00),
     Rgb::from_hex(0xFF55FF),
+];
+
+const ITERM_GREEN_U0020_PHOSPHOR_U0020_CRT_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x00CC44),
+    Rgb::from_hex(0x66FF66),
+    Rgb::from_hex(0x00AA00),
+    Rgb::from_hex(0x66FFAA),
+    Rgb::from_hex(0x33FF33),
+    Rgb::from_hex(0x00FF88),
+];
+const ITERM_GREEN_U0020_PHOSPHOR_U0020_CRT_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x33FF77),
+    Rgb::from_hex(0x99FF99),
+    Rgb::from_hex(0x19CC19),
+    Rgb::from_hex(0x99FFCC),
+    Rgb::from_hex(0x66FF66),
+    Rgb::from_hex(0x66FFAA),
 ];
 
 const ITERM_GREY_U0020_GREEN_NORMAL: &[Rgb; 6] = &[
@@ -4159,6 +4414,23 @@ const ITERM_JETBRAINS_U0020_DARCULA_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xFB82FF),
 ];
 
+const ITERM_JETBRAINS_U0020_ISLANDS_U0020_DARK_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x56A8F5),
+    Rgb::from_hex(0xCF8E6D),
+    Rgb::from_hex(0xF75464),
+    Rgb::from_hex(0x2AACB8),
+    Rgb::from_hex(0x6AAB73),
+    Rgb::from_hex(0xC77DBB),
+];
+const ITERM_JETBRAINS_U0020_ISLANDS_U0020_DARK_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x548AF7),
+    Rgb::from_hex(0xF0AC81),
+    Rgb::from_hex(0xF57E84),
+    Rgb::from_hex(0x16BAAC),
+    Rgb::from_hex(0x6DB083),
+    Rgb::from_hex(0xB189F5),
+];
+
 const ITERM_JETCALM_U0020_LIGHT_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x4682B4),
     Rgb::from_hex(0x5C3E00),
@@ -4686,6 +4958,23 @@ const ITERM_LAVANDULA_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xA776E0),
 ];
 
+const ITERM_LETTERPRESS_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2A5C8A),
+    Rgb::from_hex(0x8A5E0A),
+    Rgb::from_hex(0xB0202A),
+    Rgb::from_hex(0x176B5F),
+    Rgb::from_hex(0x506B24),
+    Rgb::from_hex(0x6E4B2E),
+];
+const ITERM_LETTERPRESS_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2A5C8A),
+    Rgb::from_hex(0x8A4FA0),
+    Rgb::from_hex(0xB0202A),
+    Rgb::from_hex(0x176B5F),
+    Rgb::from_hex(0x506B24),
+    Rgb::from_hex(0x176B5F),
+];
+
 const ITERM_LIGHT_U0020_OWL_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x288ED7),
     Rgb::from_hex(0xE0AF02),
@@ -4854,6 +5143,23 @@ const ITERM_MARIANA_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x82C4C4),
     Rgb::from_hex(0xACD1A8),
     Rgb::from_hex(0xD8B6D8),
+];
+
+const ITERM_MATCHA_U0020_ZEN_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2E7C78),
+    Rgb::from_hex(0x927000),
+    Rgb::from_hex(0xC2452A),
+    Rgb::from_hex(0x2A8585),
+    Rgb::from_hex(0x4E8C2E),
+    Rgb::from_hex(0x7E5BA6),
+];
+const ITERM_MATCHA_U0020_ZEN_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2E7C78),
+    Rgb::from_hex(0xB05A1E),
+    Rgb::from_hex(0xC2452A),
+    Rgb::from_hex(0x2A8585),
+    Rgb::from_hex(0x4E8C2E),
+    Rgb::from_hex(0x7E5BA6),
 ];
 
 const ITERM_MATERIAL_U0020_DARK_NORMAL: &[Rgb; 6] = &[
@@ -5094,6 +5400,23 @@ const ITERM_MESILA_U0020_ONE_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x7D70BA),
 ];
 
+const ITERM_MIAMI_U0020_HEAT_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x29B6FF),
+    Rgb::from_hex(0xFFCB52),
+    Rgb::from_hex(0xFF3D7F),
+    Rgb::from_hex(0x18E0FF),
+    Rgb::from_hex(0x2EE6B6),
+    Rgb::from_hex(0xB86BFF),
+];
+const ITERM_MIAMI_U0020_HEAT_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x29B6FF),
+    Rgb::from_hex(0xFF7847),
+    Rgb::from_hex(0xFF2E97),
+    Rgb::from_hex(0x18E0FF),
+    Rgb::from_hex(0x2EE6B6),
+    Rgb::from_hex(0xB86BFF),
+];
+
 const ITERM_MIASMA_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x78824B),
     Rgb::from_hex(0xB36D43),
@@ -5109,6 +5432,23 @@ const ITERM_MIASMA_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xC9A554),
     Rgb::from_hex(0x5F875F),
     Rgb::from_hex(0xBB7744),
+];
+
+const ITERM_MIDNIGHT_U0020_ARCADE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60A5FA),
+    Rgb::from_hex(0xFBBF24),
+    Rgb::from_hex(0xFB7185),
+    Rgb::from_hex(0x22D3EE),
+    Rgb::from_hex(0x22C55E),
+    Rgb::from_hex(0xE879F9),
+];
+const ITERM_MIDNIGHT_U0020_ARCADE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x80B7FB),
+    Rgb::from_hex(0xFCCB4B),
+    Rgb::from_hex(0xFC8D9D),
+    Rgb::from_hex(0x4EDCF1),
+    Rgb::from_hex(0x4ED17E),
+    Rgb::from_hex(0xED94FA),
 ];
 
 const ITERM_MIDNIGHT_U0020_IN_U0020_MOJAVE_NORMAL: &[Rgb; 6] = &[
@@ -5162,6 +5502,23 @@ const ITERM_MISTERIOSO_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xFF37FF),
 ];
 
+const ITERM_MODUS_U0020_OPERANDI_U0020_DEUTERANOPIA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0031A9),
+    Rgb::from_hex(0x695500),
+    Rgb::from_hex(0xA60000),
+    Rgb::from_hex(0x005E8B),
+    Rgb::from_hex(0x006800),
+    Rgb::from_hex(0x721045),
+];
+const ITERM_MODUS_U0020_OPERANDI_U0020_DEUTERANOPIA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x3548CF),
+    Rgb::from_hex(0x973300),
+    Rgb::from_hex(0x972500),
+    Rgb::from_hex(0x005F5F),
+    Rgb::from_hex(0x00663F),
+    Rgb::from_hex(0x531AB6),
+];
+
 const ITERM_MODUS_U0020_OPERANDI_U0020_TINTED_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x0031A9),
     Rgb::from_hex(0x6F5500),
@@ -5174,6 +5531,23 @@ const ITERM_MODUS_U0020_OPERANDI_U0020_TINTED_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x3548CF),
     Rgb::from_hex(0x884900),
     Rgb::from_hex(0x972500),
+    Rgb::from_hex(0x005F5F),
+    Rgb::from_hex(0x00663F),
+    Rgb::from_hex(0x531AB6),
+];
+
+const ITERM_MODUS_U0020_OPERANDI_U0020_TRITANOPIA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0031A9),
+    Rgb::from_hex(0x695500),
+    Rgb::from_hex(0xA60000),
+    Rgb::from_hex(0x005E8B),
+    Rgb::from_hex(0x006800),
+    Rgb::from_hex(0x721045),
+];
+const ITERM_MODUS_U0020_OPERANDI_U0020_TRITANOPIA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x3548CF),
+    Rgb::from_hex(0x973300),
+    Rgb::from_hex(0xB21100),
     Rgb::from_hex(0x005F5F),
     Rgb::from_hex(0x00663F),
     Rgb::from_hex(0x531AB6),
@@ -5196,6 +5570,23 @@ const ITERM_MODUS_U0020_OPERANDI_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x531AB6),
 ];
 
+const ITERM_MODUS_U0020_VIVENDI_U0020_DEUTERANOPIA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2FAFFF),
+    Rgb::from_hex(0xCABF00),
+    Rgb::from_hex(0xFF5F59),
+    Rgb::from_hex(0x00D3D0),
+    Rgb::from_hex(0x44BC44),
+    Rgb::from_hex(0xFEACD0),
+];
+const ITERM_MODUS_U0020_VIVENDI_U0020_DEUTERANOPIA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x79A8FF),
+    Rgb::from_hex(0xFFA00F),
+    Rgb::from_hex(0xFF7F9F),
+    Rgb::from_hex(0x6AE4B9),
+    Rgb::from_hex(0x00C06F),
+    Rgb::from_hex(0xB6A0FF),
+];
+
 const ITERM_MODUS_U0020_VIVENDI_U0020_TINTED_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x2FAFFF),
     Rgb::from_hex(0xD0BC00),
@@ -5208,6 +5599,23 @@ const ITERM_MODUS_U0020_VIVENDI_U0020_TINTED_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x79A8FF),
     Rgb::from_hex(0xFEC43F),
     Rgb::from_hex(0xFF6B55),
+    Rgb::from_hex(0x6AE4B9),
+    Rgb::from_hex(0x00C06F),
+    Rgb::from_hex(0xB6A0FF),
+];
+
+const ITERM_MODUS_U0020_VIVENDI_U0020_TRITANOPIA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2FAFFF),
+    Rgb::from_hex(0xCABF00),
+    Rgb::from_hex(0xFF5F59),
+    Rgb::from_hex(0x00D3D0),
+    Rgb::from_hex(0x44BC44),
+    Rgb::from_hex(0xFEACD0),
+];
+const ITERM_MODUS_U0020_VIVENDI_U0020_TRITANOPIA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x79A8FF),
+    Rgb::from_hex(0xFFA00F),
+    Rgb::from_hex(0xFF6740),
     Rgb::from_hex(0x6AE4B9),
     Rgb::from_hex(0x00C06F),
     Rgb::from_hex(0xB6A0FF),
@@ -5553,6 +5961,23 @@ const ITERM_N0TCH2K_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xA3A3A3),
 ];
 
+const ITERM_NEBULA_U0020_DRIFT_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x7C9BFF),
+    Rgb::from_hex(0xFFCB6B),
+    Rgb::from_hex(0xFF5C8D),
+    Rgb::from_hex(0x57E6F0),
+    Rgb::from_hex(0x66E6A8),
+    Rgb::from_hex(0xC77DFF),
+];
+const ITERM_NEBULA_U0020_DRIFT_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x7C9BFF),
+    Rgb::from_hex(0xFF9E64),
+    Rgb::from_hex(0xFF5C8D),
+    Rgb::from_hex(0x57E6F0),
+    Rgb::from_hex(0x66E6A8),
+    Rgb::from_hex(0xC77DFF),
+];
+
 const ITERM_NEOBONES_U0020_DARK_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x8190D4),
     Rgb::from_hex(0xB77E64),
@@ -5789,6 +6214,193 @@ const ITERM_NO_U0020_CLOWN_U0020_FIESTA_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x88AFA2),
     Rgb::from_hex(0x90A959),
     Rgb::from_hex(0xAA759F),
+];
+
+const ITERM_NOCTIS_U0020_AZUREUS_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_U0020_AZUREUS_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
+];
+
+const ITERM_NOCTIS_U0020_BORDO_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_U0020_BORDO_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
+];
+
+const ITERM_NOCTIS_U0020_HIBERNUS_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0094F0),
+    Rgb::from_hex(0xF49725),
+    Rgb::from_hex(0xE34E1C),
+    Rgb::from_hex(0x00BDD6),
+    Rgb::from_hex(0x00B368),
+    Rgb::from_hex(0xFF5792),
+];
+const ITERM_NOCTIS_U0020_HIBERNUS_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0FA3FF),
+    Rgb::from_hex(0xFF8C00),
+    Rgb::from_hex(0xFF4000),
+    Rgb::from_hex(0x00CBE6),
+    Rgb::from_hex(0x00D17A),
+    Rgb::from_hex(0xFF6B9F),
+];
+
+const ITERM_NOCTIS_U0020_LILAC_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0094F0),
+    Rgb::from_hex(0xF49725),
+    Rgb::from_hex(0xE34E1C),
+    Rgb::from_hex(0x00BDD6),
+    Rgb::from_hex(0x00B368),
+    Rgb::from_hex(0xFF5792),
+];
+const ITERM_NOCTIS_U0020_LILAC_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0FA3FF),
+    Rgb::from_hex(0xFF8C00),
+    Rgb::from_hex(0xFF4000),
+    Rgb::from_hex(0x00CBE6),
+    Rgb::from_hex(0x00D17A),
+    Rgb::from_hex(0xFF6B9F),
+];
+
+const ITERM_NOCTIS_U0020_LUX_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0094F0),
+    Rgb::from_hex(0xF49725),
+    Rgb::from_hex(0xE34E1C),
+    Rgb::from_hex(0x00BDD6),
+    Rgb::from_hex(0x00B368),
+    Rgb::from_hex(0xFF5792),
+];
+const ITERM_NOCTIS_U0020_LUX_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0FA3FF),
+    Rgb::from_hex(0xFF8C00),
+    Rgb::from_hex(0xFF4000),
+    Rgb::from_hex(0x00CBE6),
+    Rgb::from_hex(0x00D17A),
+    Rgb::from_hex(0xFF6B9F),
+];
+
+const ITERM_NOCTIS_U0020_MINIMUS_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x6196B8),
+    Rgb::from_hex(0xC8A984),
+    Rgb::from_hex(0xC08872),
+    Rgb::from_hex(0x72B7C0),
+    Rgb::from_hex(0x72C09F),
+    Rgb::from_hex(0xC28097),
+];
+const ITERM_NOCTIS_U0020_MINIMUS_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x68A4CA),
+    Rgb::from_hex(0xD1AA7B),
+    Rgb::from_hex(0xCA8468),
+    Rgb::from_hex(0x84C0C8),
+    Rgb::from_hex(0x84C8AB),
+    Rgb::from_hex(0xC88DA2),
+];
+
+const ITERM_NOCTIS_U0020_OBSCURO_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_U0020_OBSCURO_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
+];
+
+const ITERM_NOCTIS_U0020_SERENO_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_U0020_SERENO_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
+];
+
+const ITERM_NOCTIS_U0020_UVA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_U0020_UVA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
+];
+
+const ITERM_NOCTIS_U0020_VIOLA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_U0020_VIOLA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
+];
+
+const ITERM_NOCTIS_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x49ACE9),
+    Rgb::from_hex(0xE4B781),
+    Rgb::from_hex(0xE66533),
+    Rgb::from_hex(0x49D6E9),
+    Rgb::from_hex(0x49E9A6),
+    Rgb::from_hex(0xDF769B),
+];
+const ITERM_NOCTIS_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x60B6EB),
+    Rgb::from_hex(0xE69533),
+    Rgb::from_hex(0xE97749),
+    Rgb::from_hex(0x60DBEB),
+    Rgb::from_hex(0x60EBB1),
+    Rgb::from_hex(0xE798B3),
 ];
 
 const ITERM_NOCTURNAL_U0020_WINTER_NORMAL: &[Rgb; 6] = &[
@@ -6148,6 +6760,23 @@ const ITERM_ONENORD_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xB988B0),
 ];
 
+const ITERM_OPALINE_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x8FB4FF),
+    Rgb::from_hex(0xFFC2AE),
+    Rgb::from_hex(0xFF6B92),
+    Rgb::from_hex(0x5FE3D8),
+    Rgb::from_hex(0x86E6B4),
+    Rgb::from_hex(0xBE9BFF),
+];
+const ITERM_OPALINE_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xB79BFF),
+    Rgb::from_hex(0xF4D27E),
+    Rgb::from_hex(0xFF81A2),
+    Rgb::from_hex(0x72E6DD),
+    Rgb::from_hex(0x95E9BD),
+    Rgb::from_hex(0xFF9ED2),
+];
+
 const ITERM_OPERATOR_U0020_MONO_U0020_DARK_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x4387CF),
     Rgb::from_hex(0xD4D697),
@@ -6163,6 +6792,23 @@ const ITERM_OPERATOR_U0020_MONO_U0020_DARK_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x82EADA),
     Rgb::from_hex(0x83D0A2),
     Rgb::from_hex(0xFF2C7A),
+];
+
+const ITERM_OUTRUN_U0020_ELECTRIC_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x1EA8FC),
+    Rgb::from_hex(0xFFD400),
+    Rgb::from_hex(0xE61F44),
+    Rgb::from_hex(0x42C6FF),
+    Rgb::from_hex(0xA7DA1E),
+    Rgb::from_hex(0xFF2AFC),
+];
+const ITERM_OUTRUN_U0020_ELECTRIC_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x6DC6FD),
+    Rgb::from_hex(0xFFE359),
+    Rgb::from_hex(0xEF6D85),
+    Rgb::from_hex(0x84DAFF),
+    Rgb::from_hex(0xC6E76D),
+    Rgb::from_hex(0xDF85FF),
 ];
 
 const ITERM_OVERNIGHT_U0020_SLUMBER_NORMAL: &[Rgb; 6] = &[
@@ -6197,6 +6843,23 @@ const ITERM_OWL_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x7F7F7F),
     Rgb::from_hex(0x989898),
     Rgb::from_hex(0xB1B1B1),
+];
+
+const ITERM_OXBLOOD_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xD9743F),
+    Rgb::from_hex(0xE0B24A),
+    Rgb::from_hex(0xFF4D54),
+    Rgb::from_hex(0xE0A36A),
+    Rgb::from_hex(0xC9A24A),
+    Rgb::from_hex(0xE0556B),
+];
+const ITERM_OXBLOOD_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xE86B72),
+    Rgb::from_hex(0xD9743F),
+    Rgb::from_hex(0xFF686E),
+    Rgb::from_hex(0xE4AE7C),
+    Rgb::from_hex(0xCFAD60),
+    Rgb::from_hex(0xC8324B),
 ];
 
 const ITERM_OXIDE_NORMAL: &[Rgb; 6] = &[
@@ -6384,6 +7047,23 @@ const ITERM_PATINA_U0020_STELLAR_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x337675),
     Rgb::from_hex(0x3E7A5E),
     Rgb::from_hex(0x9D594B),
+];
+
+const ITERM_PATINA_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x5FC9B0),
+    Rgb::from_hex(0xC8A24A),
+    Rgb::from_hex(0xD9603F),
+    Rgb::from_hex(0x7FD0C0),
+    Rgb::from_hex(0x9FC08C),
+    Rgb::from_hex(0xD7B45A),
+];
+const ITERM_PATINA_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x5FC9B0),
+    Rgb::from_hex(0xD98E5A),
+    Rgb::from_hex(0xDF785C),
+    Rgb::from_hex(0x8ED6C8),
+    Rgb::from_hex(0xABC89A),
+    Rgb::from_hex(0xE0C36A),
 ];
 
 const ITERM_PAUL_U0020_MILLR_NORMAL: &[Rgb; 6] = &[
@@ -6624,6 +7304,23 @@ const ITERM_POPPING_U0020_AND_U0020_LOCKING_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xD3869B),
 ];
 
+const ITERM_PORCELAIN_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x004CC8),
+    Rgb::from_hex(0x855700),
+    Rgb::from_hex(0xC60018),
+    Rgb::from_hex(0x006873),
+    Rgb::from_hex(0x157424),
+    Rgb::from_hex(0x761BC3),
+];
+const ITERM_PORCELAIN_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x005BDB),
+    Rgb::from_hex(0xAF2700),
+    Rgb::from_hex(0xD60027),
+    Rgb::from_hex(0x007F8F),
+    Rgb::from_hex(0x1B842D),
+    Rgb::from_hex(0x862AD2),
+];
+
 const ITERM_POWERSHELL_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x4140C3),
     Rgb::from_hex(0xC4A000),
@@ -6656,6 +7353,23 @@ const ITERM_PRIMARY_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x0F9D58),
     Rgb::from_hex(0x0F9D58),
     Rgb::from_hex(0x4285F4),
+];
+
+const ITERM_PRISM_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x47B3FF),
+    Rgb::from_hex(0xFAD77C),
+    Rgb::from_hex(0xFF7192),
+    Rgb::from_hex(0x31DCF2),
+    Rgb::from_hex(0x71E0B0),
+    Rgb::from_hex(0x9DA9FF),
+];
+const ITERM_PRISM_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x77CAFF),
+    Rgb::from_hex(0xFCA76D),
+    Rgb::from_hex(0xFF96AD),
+    Rgb::from_hex(0x6CEAFB),
+    Rgb::from_hex(0x93ECC7),
+    Rgb::from_hex(0xB8C1FF),
 ];
 
 const ITERM_PRO_U0020_LIGHT_NORMAL: &[Rgb; 6] = &[
@@ -6692,6 +7406,23 @@ const ITERM_PRO_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xE500E5),
 ];
 
+const ITERM_PURPLE_U0020_PORTAL_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xFACC15),
+    Rgb::from_hex(0xF472B6),
+    Rgb::from_hex(0xFB7185),
+    Rgb::from_hex(0x580FF0),
+    Rgb::from_hex(0x34D399),
+    Rgb::from_hex(0x38BDF8),
+];
+const ITERM_PURPLE_U0020_PORTAL_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xFBD644),
+    Rgb::from_hex(0xF68BC3),
+    Rgb::from_hex(0xFC8D9D),
+    Rgb::from_hex(0x793FF3),
+    Rgb::from_hex(0x5DDCAD),
+    Rgb::from_hex(0x60CAF9),
+];
+
 const ITERM_PURPLE_U0020_RAIN_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x00A2FA),
     Rgb::from_hex(0xFFC400),
@@ -6724,6 +7455,40 @@ const ITERM_PURPLEPETER_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xA0A0D6),
     Rgb::from_hex(0xB4BE8F),
     Rgb::from_hex(0xBA91D4),
+];
+
+const ITERM_PYROKAI_U0020_LIGHT_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0979C4),
+    Rgb::from_hex(0x8E7100),
+    Rgb::from_hex(0xB84963),
+    Rgb::from_hex(0x008490),
+    Rgb::from_hex(0x568413),
+    Rgb::from_hex(0xB44A74),
+];
+const ITERM_PYROKAI_U0020_LIGHT_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x0F619D),
+    Rgb::from_hex(0x735A00),
+    Rgb::from_hex(0x943C50),
+    Rgb::from_hex(0x006A74),
+    Rgb::from_hex(0x456A13),
+    Rgb::from_hex(0x913C5D),
+];
+
+const ITERM_PYROKAI_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x2AA0F9),
+    Rgb::from_hex(0xBB9500),
+    Rgb::from_hex(0xEC6785),
+    Rgb::from_hex(0x00AEBD),
+    Rgb::from_hex(0x75AD2F),
+    Rgb::from_hex(0xE76899),
+];
+const ITERM_PYROKAI_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x5BB3FF),
+    Rgb::from_hex(0xD0A70E),
+    Rgb::from_hex(0xFA8099),
+    Rgb::from_hex(0x00C3D3),
+    Rgb::from_hex(0x8BBF53),
+    Rgb::from_hex(0xF681AC),
 ];
 
 const ITERM_RAPTURE_NORMAL: &[Rgb; 6] = &[
@@ -8409,6 +9174,23 @@ const ITERM_TERMINAL_U0020_BASIC_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xE500E5),
 ];
 
+const ITERM_TERMINAL_U0020_GREEN_U0020_1999_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x7DD3FC),
+    Rgb::from_hex(0x00D26A),
+    Rgb::from_hex(0xFF5C7A),
+    Rgb::from_hex(0x39FF88),
+    Rgb::from_hex(0x22C55E),
+    Rgb::from_hex(0x9DFF57),
+];
+const ITERM_TERMINAL_U0020_GREEN_U0020_1999_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x97DCFD),
+    Rgb::from_hex(0x2EDA85),
+    Rgb::from_hex(0xFF7D95),
+    Rgb::from_hex(0x61FFA0),
+    Rgb::from_hex(0x4ED17E),
+    Rgb::from_hex(0xB1FF79),
+];
+
 const ITERM_THAYER_U0020_BRIGHT_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x2757D6),
     Rgb::from_hex(0xF4FD22),
@@ -8919,6 +9701,23 @@ const ITERM_VAGUE_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xC9B1CA),
 ];
 
+const ITERM_VAPORWAVE_U0020_SUNSET_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xA78BFA),
+    Rgb::from_hex(0xFB923C),
+    Rgb::from_hex(0xFB7185),
+    Rgb::from_hex(0xFF4FD8),
+    Rgb::from_hex(0x2DD4BF),
+    Rgb::from_hex(0x22D3EE),
+];
+const ITERM_VAPORWAVE_U0020_SUNSET_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xB9A2FB),
+    Rgb::from_hex(0xFCA65F),
+    Rgb::from_hex(0xFC8D9D),
+    Rgb::from_hex(0xFF72E0),
+    Rgb::from_hex(0x57DDCC),
+    Rgb::from_hex(0x4EDCF1),
+];
+
 const ITERM_VAUGHN_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x5555FF),
     Rgb::from_hex(0xDFAF8F),
@@ -8936,6 +9735,23 @@ const ITERM_VAUGHN_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xEC93D3),
 ];
 
+const ITERM_VELVET_U0020_COURT_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xB392E8),
+    Rgb::from_hex(0xF0C44E),
+    Rgb::from_hex(0xEE5C82),
+    Rgb::from_hex(0x6FD0C8),
+    Rgb::from_hex(0x9AD08A),
+    Rgb::from_hex(0xD087E0),
+];
+const ITERM_VELVET_U0020_COURT_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xB392E8),
+    Rgb::from_hex(0xE8964F),
+    Rgb::from_hex(0xEE5C82),
+    Rgb::from_hex(0x6FD0C8),
+    Rgb::from_hex(0x9AD08A),
+    Rgb::from_hex(0xD087E0),
+];
+
 const ITERM_VERCEL_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x006AFF),
     Rgb::from_hex(0xFFAE00),
@@ -8951,6 +9767,23 @@ const ITERM_VERCEL_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0x00E4C4),
     Rgb::from_hex(0x4BE15D),
     Rgb::from_hex(0xF97EA8),
+];
+
+const ITERM_VERDIGRIS_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0x5FBFB0),
+    Rgb::from_hex(0xD9A441),
+    Rgb::from_hex(0xD9604F),
+    Rgb::from_hex(0x8FD6B0),
+    Rgb::from_hex(0xA8B86A),
+    Rgb::from_hex(0xB98FB0),
+];
+const ITERM_VERDIGRIS_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0x5FBFB0),
+    Rgb::from_hex(0xC97A45),
+    Rgb::from_hex(0xD9604F),
+    Rgb::from_hex(0x8FD6B0),
+    Rgb::from_hex(0xA8B86A),
+    Rgb::from_hex(0xB98FB0),
 ];
 
 const ITERM_VESPER_NORMAL: &[Rgb; 6] = &[
@@ -9259,6 +10092,23 @@ const ITERM_XCODE_U0020_WWDC_BRIGHT: &[Rgb; 6] = &[
     Rgb::from_hex(0xB73999),
 ];
 
+const ITERM_Y2K_U0020_CHROME_NORMAL: &[Rgb; 6] = &[
+    Rgb::from_hex(0xF97316),
+    Rgb::from_hex(0x0891B2),
+    Rgb::from_hex(0xDC2626),
+    Rgb::from_hex(0x2563EB),
+    Rgb::from_hex(0x15803D),
+    Rgb::from_hex(0x7C3AED),
+];
+const ITERM_Y2K_U0020_CHROME_BRIGHT: &[Rgb; 6] = &[
+    Rgb::from_hex(0xC75C12),
+    Rgb::from_hex(0x077792),
+    Rgb::from_hex(0xB01E1E),
+    Rgb::from_hex(0x1E4FBC),
+    Rgb::from_hex(0x116631),
+    Rgb::from_hex(0x632EBE),
+];
+
 const ITERM_ZENBONES_U0020_DARK_NORMAL: &[Rgb; 6] = &[
     Rgb::from_hex(0x6099C0),
     Rgb::from_hex(0xB77E64),
@@ -9407,6 +10257,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ),
     ItermPalette::new("Abernathy", ITERM_ABERNATHY_NORMAL, ITERM_ABERNATHY_BRIGHT),
     ItermPalette::new(
+        "Acid Lime",
+        ITERM_ACID_U0020_LIME_NORMAL,
+        ITERM_ACID_U0020_LIME_BRIGHT,
+    ),
+    ItermPalette::new(
         "Adventure Time",
         ITERM_ADVENTURE_U0020_TIME_NORMAL,
         ITERM_ADVENTURE_U0020_TIME_BRIGHT,
@@ -9434,6 +10289,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         "Alien Blood",
         ITERM_ALIEN_U0020_BLOOD_NORMAL,
         ITERM_ALIEN_U0020_BLOOD_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Amber CRT Retro",
+        ITERM_AMBER_U0020_CRT_U0020_RETRO_NORMAL,
+        ITERM_AMBER_U0020_CRT_U0020_RETRO_BRIGHT,
     ),
     ItermPalette::new("Andromeda", ITERM_ANDROMEDA_NORMAL, ITERM_ANDROMEDA_BRIGHT),
     ItermPalette::new(
@@ -9476,6 +10336,7 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_ATOM_U0020_ONE_U0020_LIGHT_BRIGHT,
     ),
     ItermPalette::new("Atom", ITERM_ATOM_NORMAL, ITERM_ATOM_BRIGHT),
+    ItermPalette::new("Aubade", ITERM_AUBADE_NORMAL, ITERM_AUBADE_BRIGHT),
     ItermPalette::new(
         "Aura Dark",
         ITERM_AURA_U0020_DARK_NORMAL,
@@ -9646,6 +10507,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ItermPalette::new("Calamity", ITERM_CALAMITY_NORMAL, ITERM_CALAMITY_BRIGHT),
     ItermPalette::new("Carbonfox", ITERM_CARBONFOX_NORMAL, ITERM_CARBONFOX_BRIGHT),
     ItermPalette::new(
+        "Cassette Tape",
+        ITERM_CASSETTE_U0020_TAPE_NORMAL,
+        ITERM_CASSETTE_U0020_TAPE_BRIGHT,
+    ),
+    ItermPalette::new(
         "Catppuccin Frappe",
         ITERM_CATPPUCCIN_U0020_FRAPPE_NORMAL,
         ITERM_CATPPUCCIN_U0020_FRAPPE_BRIGHT,
@@ -9679,6 +10545,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ),
     ItermPalette::new("Chester", ITERM_CHESTER_NORMAL, ITERM_CHESTER_BRIGHT),
     ItermPalette::new("Ciapre", ITERM_CIAPRE_NORMAL, ITERM_CIAPRE_BRIGHT),
+    ItermPalette::new(
+        "Citrus Ink",
+        ITERM_CITRUS_U0020_INK_NORMAL,
+        ITERM_CITRUS_U0020_INK_BRIGHT,
+    ),
     ItermPalette::new(
         "Citruszest",
         ITERM_CITRUSZEST_NORMAL,
@@ -9743,6 +10614,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_CRAYON_U0020_PONY_U0020_FISH_BRIGHT,
     ),
     ItermPalette::new(
+        "CRT Amber",
+        ITERM_CRT_U0020_AMBER_NORMAL,
+        ITERM_CRT_U0020_AMBER_BRIGHT,
+    ),
+    ItermPalette::new(
         "Cursor Dark",
         ITERM_CURSOR_U0020_DARK_NORMAL,
         ITERM_CURSOR_U0020_DARK_BRIGHT,
@@ -9796,7 +10672,18 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_DARKMATRIX_BRIGHT,
     ),
     ItermPalette::new("Darkside", ITERM_DARKSIDE_NORMAL, ITERM_DARKSIDE_BRIGHT),
+    ItermPalette::new(
+        "datum (dark)",
+        ITERM_DATUM_U0020__U0028_DARK_U0029__NORMAL,
+        ITERM_DATUM_U0020__U0028_DARK_U0029__BRIGHT,
+    ),
+    ItermPalette::new(
+        "datum (light)",
+        ITERM_DATUM_U0020__U0028_LIGHT_U0029__NORMAL,
+        ITERM_DATUM_U0020__U0028_LIGHT_U0029__BRIGHT,
+    ),
     ItermPalette::new("Dawnfox", ITERM_DAWNFOX_NORMAL, ITERM_DAWNFOX_BRIGHT),
+    ItermPalette::new("Daybreak", ITERM_DAYBREAK_NORMAL, ITERM_DAYBREAK_BRIGHT),
     ItermPalette::new("Dayfox", ITERM_DAYFOX_NORMAL, ITERM_DAYFOX_BRIGHT),
     ItermPalette::new("Deep", ITERM_DEEP_NORMAL, ITERM_DEEP_BRIGHT),
     ItermPalette::new("Desert", ITERM_DESERT_NORMAL, ITERM_DESERT_BRIGHT),
@@ -9844,6 +10731,7 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_DRACULA_U002B__NORMAL,
         ITERM_DRACULA_U002B__BRIGHT,
     ),
+    ItermPalette::new("Driftwood", ITERM_DRIFTWOOD_NORMAL, ITERM_DRIFTWOOD_BRIGHT),
     ItermPalette::new("Duckbones", ITERM_DUCKBONES_NORMAL, ITERM_DUCKBONES_BRIGHT),
     ItermPalette::new(
         "Duotone Dark",
@@ -9852,6 +10740,7 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ),
     ItermPalette::new("Duskfox", ITERM_DUSKFOX_NORMAL, ITERM_DUSKFOX_BRIGHT),
     ItermPalette::new("Earthsong", ITERM_EARTHSONG_NORMAL, ITERM_EARTHSONG_BRIGHT),
+    ItermPalette::new("Eclipse", ITERM_ECLIPSE_NORMAL, ITERM_ECLIPSE_BRIGHT),
     ItermPalette::new(
         "Electron Highlighter Day",
         ITERM_ELECTRON_U0020_HIGHLIGHTER_U0020_DAY_NORMAL,
@@ -9977,12 +10866,18 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_FOREST_U0020_BLUE_NORMAL,
         ITERM_FOREST_U0020_BLUE_BRIGHT,
     ),
+    ItermPalette::new(
+        "Forge Ember",
+        ITERM_FORGE_U0020_EMBER_NORMAL,
+        ITERM_FORGE_U0020_EMBER_BRIGHT,
+    ),
     ItermPalette::new("Framer", ITERM_FRAMER_NORMAL, ITERM_FRAMER_BRIGHT),
     ItermPalette::new(
         "Front End Delight",
         ITERM_FRONT_U0020_END_U0020_DELIGHT_NORMAL,
         ITERM_FRONT_U0020_END_U0020_DELIGHT_BRIGHT,
     ),
+    ItermPalette::new("Frostbyte", ITERM_FROSTBYTE_NORMAL, ITERM_FROSTBYTE_BRIGHT),
     ItermPalette::new(
         "Fun Forrest",
         ITERM_FUN_U0020_FORREST_NORMAL,
@@ -10059,7 +10954,13 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ),
     ItermPalette::new("Gleam", ITERM_GLEAM_NORMAL, ITERM_GLEAM_BRIGHT),
     ItermPalette::new("Grape", ITERM_GRAPE_NORMAL, ITERM_GRAPE_BRIGHT),
+    ItermPalette::new("Graphite", ITERM_GRAPHITE_NORMAL, ITERM_GRAPHITE_BRIGHT),
     ItermPalette::new("Grass", ITERM_GRASS_NORMAL, ITERM_GRASS_BRIGHT),
+    ItermPalette::new(
+        "Green Phosphor CRT",
+        ITERM_GREEN_U0020_PHOSPHOR_U0020_CRT_NORMAL,
+        ITERM_GREEN_U0020_PHOSPHOR_U0020_CRT_BRIGHT,
+    ),
     ItermPalette::new(
         "Grey Green",
         ITERM_GREY_U0020_GREEN_NORMAL,
@@ -10284,6 +11185,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_JETBRAINS_U0020_DARCULA_BRIGHT,
     ),
     ItermPalette::new(
+        "JetBrains Islands Dark",
+        ITERM_JETBRAINS_U0020_ISLANDS_U0020_DARK_NORMAL,
+        ITERM_JETBRAINS_U0020_ISLANDS_U0020_DARK_BRIGHT,
+    ),
+    ItermPalette::new(
         "JetCalm Light",
         ITERM_JETCALM_U0020_LIGHT_NORMAL,
         ITERM_JETCALM_U0020_LIGHT_BRIGHT,
@@ -10411,6 +11317,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ),
     ItermPalette::new("Lavandula", ITERM_LAVANDULA_NORMAL, ITERM_LAVANDULA_BRIGHT),
     ItermPalette::new(
+        "Letterpress",
+        ITERM_LETTERPRESS_NORMAL,
+        ITERM_LETTERPRESS_BRIGHT,
+    ),
+    ItermPalette::new(
         "Light Owl",
         ITERM_LIGHT_U0020_OWL_NORMAL,
         ITERM_LIGHT_U0020_OWL_BRIGHT,
@@ -10452,6 +11363,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_MAN_U0020_PAGE_BRIGHT,
     ),
     ItermPalette::new("Mariana", ITERM_MARIANA_NORMAL, ITERM_MARIANA_BRIGHT),
+    ItermPalette::new(
+        "Matcha Zen",
+        ITERM_MATCHA_U0020_ZEN_NORMAL,
+        ITERM_MATCHA_U0020_ZEN_BRIGHT,
+    ),
     ItermPalette::new(
         "Material Dark",
         ITERM_MATERIAL_U0020_DARK_NORMAL,
@@ -10502,7 +11418,17 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_MESILA_U0020_ONE_NORMAL,
         ITERM_MESILA_U0020_ONE_BRIGHT,
     ),
+    ItermPalette::new(
+        "Miami Heat",
+        ITERM_MIAMI_U0020_HEAT_NORMAL,
+        ITERM_MIAMI_U0020_HEAT_BRIGHT,
+    ),
     ItermPalette::new("Miasma", ITERM_MIASMA_NORMAL, ITERM_MIASMA_BRIGHT),
+    ItermPalette::new(
+        "Midnight Arcade",
+        ITERM_MIDNIGHT_U0020_ARCADE_NORMAL,
+        ITERM_MIDNIGHT_U0020_ARCADE_BRIGHT,
+    ),
     ItermPalette::new(
         "Midnight In Mojave",
         ITERM_MIDNIGHT_U0020_IN_U0020_MOJAVE_NORMAL,
@@ -10515,9 +11441,19 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_MISTERIOSO_BRIGHT,
     ),
     ItermPalette::new(
+        "Modus Operandi Deuteranopia",
+        ITERM_MODUS_U0020_OPERANDI_U0020_DEUTERANOPIA_NORMAL,
+        ITERM_MODUS_U0020_OPERANDI_U0020_DEUTERANOPIA_BRIGHT,
+    ),
+    ItermPalette::new(
         "Modus Operandi Tinted",
         ITERM_MODUS_U0020_OPERANDI_U0020_TINTED_NORMAL,
         ITERM_MODUS_U0020_OPERANDI_U0020_TINTED_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Modus Operandi Tritanopia",
+        ITERM_MODUS_U0020_OPERANDI_U0020_TRITANOPIA_NORMAL,
+        ITERM_MODUS_U0020_OPERANDI_U0020_TRITANOPIA_BRIGHT,
     ),
     ItermPalette::new(
         "Modus Operandi",
@@ -10525,9 +11461,19 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_MODUS_U0020_OPERANDI_BRIGHT,
     ),
     ItermPalette::new(
+        "Modus Vivendi Deuteranopia",
+        ITERM_MODUS_U0020_VIVENDI_U0020_DEUTERANOPIA_NORMAL,
+        ITERM_MODUS_U0020_VIVENDI_U0020_DEUTERANOPIA_BRIGHT,
+    ),
+    ItermPalette::new(
         "Modus Vivendi Tinted",
         ITERM_MODUS_U0020_VIVENDI_U0020_TINTED_NORMAL,
         ITERM_MODUS_U0020_VIVENDI_U0020_TINTED_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Modus Vivendi Tritanopia",
+        ITERM_MODUS_U0020_VIVENDI_U0020_TRITANOPIA_NORMAL,
+        ITERM_MODUS_U0020_VIVENDI_U0020_TRITANOPIA_BRIGHT,
     ),
     ItermPalette::new(
         "Modus Vivendi",
@@ -10614,6 +11560,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ItermPalette::new("Moonwalk", ITERM_MOONWALK_NORMAL, ITERM_MOONWALK_BRIGHT),
     ItermPalette::new("N0Tch2K", ITERM_N0TCH2K_NORMAL, ITERM_N0TCH2K_BRIGHT),
     ItermPalette::new(
+        "Nebula Drift",
+        ITERM_NEBULA_U0020_DRIFT_NORMAL,
+        ITERM_NEBULA_U0020_DRIFT_BRIGHT,
+    ),
+    ItermPalette::new(
         "Neobones Dark",
         ITERM_NEOBONES_U0020_DARK_NORMAL,
         ITERM_NEOBONES_U0020_DARK_BRIGHT,
@@ -10667,6 +11618,57 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_NO_U0020_CLOWN_U0020_FIESTA_NORMAL,
         ITERM_NO_U0020_CLOWN_U0020_FIESTA_BRIGHT,
     ),
+    ItermPalette::new(
+        "Noctis Azureus",
+        ITERM_NOCTIS_U0020_AZUREUS_NORMAL,
+        ITERM_NOCTIS_U0020_AZUREUS_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Bordo",
+        ITERM_NOCTIS_U0020_BORDO_NORMAL,
+        ITERM_NOCTIS_U0020_BORDO_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Hibernus",
+        ITERM_NOCTIS_U0020_HIBERNUS_NORMAL,
+        ITERM_NOCTIS_U0020_HIBERNUS_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Lilac",
+        ITERM_NOCTIS_U0020_LILAC_NORMAL,
+        ITERM_NOCTIS_U0020_LILAC_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Lux",
+        ITERM_NOCTIS_U0020_LUX_NORMAL,
+        ITERM_NOCTIS_U0020_LUX_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Minimus",
+        ITERM_NOCTIS_U0020_MINIMUS_NORMAL,
+        ITERM_NOCTIS_U0020_MINIMUS_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Obscuro",
+        ITERM_NOCTIS_U0020_OBSCURO_NORMAL,
+        ITERM_NOCTIS_U0020_OBSCURO_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Sereno",
+        ITERM_NOCTIS_U0020_SERENO_NORMAL,
+        ITERM_NOCTIS_U0020_SERENO_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Uva",
+        ITERM_NOCTIS_U0020_UVA_NORMAL,
+        ITERM_NOCTIS_U0020_UVA_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Noctis Viola",
+        ITERM_NOCTIS_U0020_VIOLA_NORMAL,
+        ITERM_NOCTIS_U0020_VIOLA_BRIGHT,
+    ),
+    ItermPalette::new("Noctis", ITERM_NOCTIS_NORMAL, ITERM_NOCTIS_BRIGHT),
     ItermPalette::new(
         "Nocturnal Winter",
         ITERM_NOCTURNAL_U0020_WINTER_NORMAL,
@@ -10740,10 +11742,16 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_ONENORD_U0020_LIGHT_BRIGHT,
     ),
     ItermPalette::new("Onenord", ITERM_ONENORD_NORMAL, ITERM_ONENORD_BRIGHT),
+    ItermPalette::new("Opaline", ITERM_OPALINE_NORMAL, ITERM_OPALINE_BRIGHT),
     ItermPalette::new(
         "Operator Mono Dark",
         ITERM_OPERATOR_U0020_MONO_U0020_DARK_NORMAL,
         ITERM_OPERATOR_U0020_MONO_U0020_DARK_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Outrun Electric",
+        ITERM_OUTRUN_U0020_ELECTRIC_NORMAL,
+        ITERM_OUTRUN_U0020_ELECTRIC_BRIGHT,
     ),
     ItermPalette::new(
         "Overnight Slumber",
@@ -10751,6 +11759,7 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_OVERNIGHT_U0020_SLUMBER_BRIGHT,
     ),
     ItermPalette::new("owl", ITERM_OWL_NORMAL, ITERM_OWL_BRIGHT),
+    ItermPalette::new("Oxblood", ITERM_OXBLOOD_NORMAL, ITERM_OXBLOOD_BRIGHT),
     ItermPalette::new("Oxide", ITERM_OXIDE_NORMAL, ITERM_OXIDE_BRIGHT),
     ItermPalette::new("Oxocarbon", ITERM_OXOCARBON_NORMAL, ITERM_OXOCARBON_BRIGHT),
     ItermPalette::new(
@@ -10794,6 +11803,7 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_PATINA_U0020_STELLAR_NORMAL,
         ITERM_PATINA_U0020_STELLAR_BRIGHT,
     ),
+    ItermPalette::new("Patina", ITERM_PATINA_NORMAL, ITERM_PATINA_BRIGHT),
     ItermPalette::new(
         "Paul Millr",
         ITERM_PAUL_U0020_MILLR_NORMAL,
@@ -10860,18 +11870,25 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_POPPING_U0020_AND_U0020_LOCKING_NORMAL,
         ITERM_POPPING_U0020_AND_U0020_LOCKING_BRIGHT,
     ),
+    ItermPalette::new("Porcelain", ITERM_PORCELAIN_NORMAL, ITERM_PORCELAIN_BRIGHT),
     ItermPalette::new(
         "Powershell",
         ITERM_POWERSHELL_NORMAL,
         ITERM_POWERSHELL_BRIGHT,
     ),
     ItermPalette::new("Primary", ITERM_PRIMARY_NORMAL, ITERM_PRIMARY_BRIGHT),
+    ItermPalette::new("Prism", ITERM_PRISM_NORMAL, ITERM_PRISM_BRIGHT),
     ItermPalette::new(
         "Pro Light",
         ITERM_PRO_U0020_LIGHT_NORMAL,
         ITERM_PRO_U0020_LIGHT_BRIGHT,
     ),
     ItermPalette::new("Pro", ITERM_PRO_NORMAL, ITERM_PRO_BRIGHT),
+    ItermPalette::new(
+        "Purple Portal",
+        ITERM_PURPLE_U0020_PORTAL_NORMAL,
+        ITERM_PURPLE_U0020_PORTAL_BRIGHT,
+    ),
     ItermPalette::new(
         "Purple Rain",
         ITERM_PURPLE_U0020_RAIN_NORMAL,
@@ -10882,6 +11899,12 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_PURPLEPETER_NORMAL,
         ITERM_PURPLEPETER_BRIGHT,
     ),
+    ItermPalette::new(
+        "Pyrokai Light",
+        ITERM_PYROKAI_U0020_LIGHT_NORMAL,
+        ITERM_PYROKAI_U0020_LIGHT_BRIGHT,
+    ),
+    ItermPalette::new("Pyrokai", ITERM_PYROKAI_NORMAL, ITERM_PYROKAI_BRIGHT),
     ItermPalette::new("Rapture", ITERM_RAPTURE_NORMAL, ITERM_RAPTURE_BRIGHT),
     ItermPalette::new(
         "Raycast Dark",
@@ -11258,6 +12281,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         ITERM_TERMINAL_U0020_BASIC_BRIGHT,
     ),
     ItermPalette::new(
+        "Terminal Green 1999",
+        ITERM_TERMINAL_U0020_GREEN_U0020_1999_NORMAL,
+        ITERM_TERMINAL_U0020_GREEN_U0020_1999_BRIGHT,
+    ),
+    ItermPalette::new(
         "Thayer Bright",
         ITERM_THAYER_U0020_BRIGHT_NORMAL,
         ITERM_THAYER_U0020_BRIGHT_BRIGHT,
@@ -11371,8 +12399,19 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
     ItermPalette::new("urban", ITERM_URBAN_NORMAL, ITERM_URBAN_BRIGHT),
     ItermPalette::new("Urple", ITERM_URPLE_NORMAL, ITERM_URPLE_BRIGHT),
     ItermPalette::new("Vague", ITERM_VAGUE_NORMAL, ITERM_VAGUE_BRIGHT),
+    ItermPalette::new(
+        "Vaporwave Sunset",
+        ITERM_VAPORWAVE_U0020_SUNSET_NORMAL,
+        ITERM_VAPORWAVE_U0020_SUNSET_BRIGHT,
+    ),
     ItermPalette::new("Vaughn", ITERM_VAUGHN_NORMAL, ITERM_VAUGHN_BRIGHT),
+    ItermPalette::new(
+        "Velvet Court",
+        ITERM_VELVET_U0020_COURT_NORMAL,
+        ITERM_VELVET_U0020_COURT_BRIGHT,
+    ),
     ItermPalette::new("Vercel", ITERM_VERCEL_NORMAL, ITERM_VERCEL_BRIGHT),
+    ItermPalette::new("Verdigris", ITERM_VERDIGRIS_NORMAL, ITERM_VERDIGRIS_BRIGHT),
     ItermPalette::new("Vesper", ITERM_VESPER_NORMAL, ITERM_VESPER_BRIGHT),
     ItermPalette::new(
         "Vibrant Ink",
@@ -11434,6 +12473,11 @@ pub(crate) static ITERM_PALETTES: &[ItermPalette] = &[
         "Xcode WWDC",
         ITERM_XCODE_U0020_WWDC_NORMAL,
         ITERM_XCODE_U0020_WWDC_BRIGHT,
+    ),
+    ItermPalette::new(
+        "Y2K Chrome",
+        ITERM_Y2K_U0020_CHROME_NORMAL,
+        ITERM_Y2K_U0020_CHROME_BRIGHT,
     ),
     ItermPalette::new(
         "Zenbones Dark",

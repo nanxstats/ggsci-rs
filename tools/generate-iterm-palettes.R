@@ -37,11 +37,11 @@ if (anyDuplicated(theme_names)) {
   stop("duplicate canonical iTerm theme name: ", theme_names[[anyDuplicated(theme_names)]], call. = FALSE)
 }
 
-expected_theme_count <- 551L
+expected_theme_count <- 601L
 expected_variants <- c("normal", "bright")
 expected_channels <- c("Blue", "Yellow", "Red", "Cyan", "Green", "Magenta")
 expected_colors_per_variant <- 6L
-expected_total_color_count <- 6612L
+expected_total_color_count <- 7212L
 hex_pattern <- "^#[0-9A-Fa-f]{6}$"
 
 normalize_key <- function(value) {

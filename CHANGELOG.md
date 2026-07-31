@@ -1,11 +1,27 @@
 # Changelog
 
-## ggsci-rs (development version)
+## ggsci-rs 0.7.0
+
+### Improvements
+
+- Synchronize the iTerm color palettes with upstream (#26).
+
+  This update adds 50 new palettes to `iterm_palettes()`: Acid Lime,
+  Amber CRT Retro, Aubade, Cassette Tape, Citrus Ink, CRT Amber, datum
+  variations, Daybreak, Driftwood, Eclipse, Forge Ember, Frostbyte, Graphite,
+  Green Phosphor CRT, JetBrains Islands Dark, Letterpress, Matcha Zen,
+  Miami Heat, Midnight Arcade, Modus Operandi and Modus Vivendi color vision
+  deficiency variations, Nebula Drift, Noctis variations, Opaline,
+  Outrun Electric, Oxblood, Patina, Porcelain, Prism, Purple Portal, Pyrokai
+  variations, Terminal Green 1999, Vaporwave Sunset, Velvet Court, Verdigris,
+  and Y2K Chrome.
 
 ### Documentation and examples
 
 - Add a demo recording using `vhs` for the interactive Ratatui palette gallery
   that cycles through all tabs and scrolls their card grids (#23, #24).
+- Update the related projects section in the README with more informative
+  descriptions of the R and Python implementations (#25).
 
 ## ggsci-rs 0.6.2
 
